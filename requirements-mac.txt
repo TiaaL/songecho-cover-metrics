@@ -1,0 +1,12 @@
+librosa
+basic-pitch
+pretty-midi
+music21
+scipy
+matplotlib
+pandas
+demucs
+pyloudnorm
+soundfile
+numpy
+

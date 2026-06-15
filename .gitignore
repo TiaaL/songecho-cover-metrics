@@ -1,0 +1,23 @@
+.DS_Store
+
+# Local Python/runtime state
+.venv/
+.uv-cache/
+.uv-python/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local model/tool caches and generated intermediates
+.cache/
+.cover_metrics_work/
+audio/
+separated/
+midi/
+
+# Logs and scratch outputs
+*.log
+results/*.partial.json
+
