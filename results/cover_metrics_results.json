@@ -1,0 +1,1022 @@
+[
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/ACE+CN+LR_S1.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S1_4240896_1781516305",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S1_4240896_1781516305/demucs/htdemucs_ft/ACE+CN+LR_S1/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S1_4240896_1781516305/demucs/htdemucs_ft/ACE+CN+LR_S1/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S1_4240896_1781516305/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S1_4240896_1781516305/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "C minor",
+    "duration_sec": 209.52,
+    "supporting_values": {
+      "LUFS": -11.967806,
+      "note_count": 542,
+      "interval_count": 541,
+      "kcr_valid_windows": 21,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.227357,
+      "PR": 59.0,
+      "PS": 7.167007,
+      "IKNR": 0.987085,
+      "IKCR": null,
+      "KC": 0.673598,
+      "KCR": 0.5,
+      "LUFS_dev": 0.032194,
+      "LRA": 5.054754,
+      "SC": 23.558636
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/ACE+CN+LR_S2.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S2_4028328_1781516305",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S2_4028328_1781516305/demucs/htdemucs_ft/ACE+CN+LR_S2/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S2_4028328_1781516305/demucs/htdemucs_ft/ACE+CN+LR_S2/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S2_4028328_1781516305/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S2_4028328_1781516305/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "D minor",
+    "duration_sec": 204.28,
+    "supporting_values": {
+      "LUFS": -11.460501,
+      "note_count": 409,
+      "interval_count": 408,
+      "kcr_valid_windows": 19,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.169118,
+      "PR": 71.0,
+      "PS": 5.712145,
+      "IKNR": 0.992665,
+      "IKCR": null,
+      "KC": 0.800259,
+      "KCR": 0.5,
+      "LUFS_dev": 0.539499,
+      "LRA": 7.374233,
+      "SC": 22.736761
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/ACE+CN+LR_S3.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S3_3534912_1781516305",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S3_3534912_1781516305/demucs/htdemucs_ft/ACE+CN+LR_S3/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S3_3534912_1781516305/demucs/htdemucs_ft/ACE+CN+LR_S3/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S3_3534912_1781516305/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S3_3534912_1781516305/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "B major",
+    "duration_sec": 184.96,
+    "supporting_values": {
+      "LUFS": -8.890998,
+      "note_count": 327,
+      "interval_count": 326,
+      "kcr_valid_windows": 19,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.168712,
+      "PR": 61.0,
+      "PS": 8.778126,
+      "IKNR": 0.914373,
+      "IKCR": null,
+      "KC": 0.825121,
+      "KCR": 0.555556,
+      "LUFS_dev": 3.109002,
+      "LRA": 13.573577,
+      "SC": 22.516836
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/ACE+CN+LR_S4.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S4_3486456_1781516307",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S4_3486456_1781516307/demucs/htdemucs_ft/ACE+CN+LR_S4/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S4_3486456_1781516307/demucs/htdemucs_ft/ACE+CN+LR_S4/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S4_3486456_1781516307/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S4_3486456_1781516307/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "G major",
+    "duration_sec": 171.0,
+    "supporting_values": {
+      "LUFS": -9.094657,
+      "note_count": 414,
+      "interval_count": 413,
+      "kcr_valid_windows": 17,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.225182,
+      "PR": 73.0,
+      "PS": 8.011333,
+      "IKNR": 0.97343,
+      "IKCR": null,
+      "KC": 0.864874,
+      "KCR": 0.3125,
+      "LUFS_dev": 2.905343,
+      "LRA": 6.407807,
+      "SC": 24.049346
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/ACE+CN+LR_S5.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S5_4787664_1781516307",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S5_4787664_1781516307/demucs/htdemucs_ft/ACE+CN+LR_S5/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S5_4787664_1781516307/demucs/htdemucs_ft/ACE+CN+LR_S5/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S5_4787664_1781516307/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_CN_LR_S5_4787664_1781516307/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "A major",
+    "duration_sec": 240.0,
+    "supporting_values": {
+      "LUFS": -11.109136,
+      "note_count": 584,
+      "interval_count": 583,
+      "kcr_valid_windows": 23,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.106346,
+      "PR": 63.0,
+      "PS": 4.656595,
+      "IKNR": 0.976027,
+      "IKCR": null,
+      "KC": 0.842554,
+      "KCR": 0.590909,
+      "LUFS_dev": 0.890864,
+      "LRA": 7.60178,
+      "SC": 22.66173
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/ACE+MUSE_S1.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S1_4070400_1781516307",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S1_4070400_1781516307/demucs/htdemucs_ft/ACE+MUSE_S1/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S1_4070400_1781516307/demucs/htdemucs_ft/ACE+MUSE_S1/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S1_4070400_1781516307/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S1_4070400_1781516307/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "E minor",
+    "duration_sec": 209.52,
+    "supporting_values": {
+      "LUFS": -13.082672,
+      "note_count": 482,
+      "interval_count": 481,
+      "kcr_valid_windows": 20,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.334719,
+      "PR": 64.0,
+      "PS": 8.325256,
+      "IKNR": 0.89834,
+      "IKCR": null,
+      "KC": 0.687831,
+      "KCR": 0.736842,
+      "LUFS_dev": 1.082672,
+      "LRA": 5.080189,
+      "SC": 22.740575
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/ACE+MUSE_S2.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S2_4005144_1781516308",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S2_4005144_1781516308/demucs/htdemucs_ft/ACE+MUSE_S2/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S2_4005144_1781516308/demucs/htdemucs_ft/ACE+MUSE_S2/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S2_4005144_1781516308/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S2_4005144_1781516308/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "A major",
+    "duration_sec": 204.28,
+    "supporting_values": {
+      "LUFS": -12.427167,
+      "note_count": 333,
+      "interval_count": 332,
+      "kcr_valid_windows": 20,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.195783,
+      "PR": 79.0,
+      "PS": 6.51967,
+      "IKNR": 0.78979,
+      "IKCR": null,
+      "KC": 0.639734,
+      "KCR": 0.578947,
+      "LUFS_dev": 0.427167,
+      "LRA": 4.853584,
+      "SC": 21.863166
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/ACE+MUSE_S3.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S3_3502728_1781516309",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S3_3502728_1781516309/demucs/htdemucs_ft/ACE+MUSE_S3/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S3_3502728_1781516309/demucs/htdemucs_ft/ACE+MUSE_S3/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S3_3502728_1781516309/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S3_3502728_1781516309/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "B major",
+    "duration_sec": 184.96,
+    "supporting_values": {
+      "LUFS": -12.195474,
+      "note_count": 379,
+      "interval_count": 378,
+      "kcr_valid_windows": 18,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.301587,
+      "PR": 71.0,
+      "PS": 8.320171,
+      "IKNR": 0.918206,
+      "IKCR": null,
+      "KC": 0.708106,
+      "KCR": 0.647059,
+      "LUFS_dev": 0.195474,
+      "LRA": 8.48296,
+      "SC": 24.018177
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/ACE+MUSE_S4.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S4_3336000_1781516318",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S4_3336000_1781516318/demucs/htdemucs_ft/ACE+MUSE_S4/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S4_3336000_1781516318/demucs/htdemucs_ft/ACE+MUSE_S4/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S4_3336000_1781516318/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S4_3336000_1781516318/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "G major",
+    "duration_sec": 171.0,
+    "supporting_values": {
+      "LUFS": -11.561018,
+      "note_count": 379,
+      "interval_count": 378,
+      "kcr_valid_windows": 17,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.198413,
+      "PR": 61.0,
+      "PS": 6.504979,
+      "IKNR": 0.970976,
+      "IKCR": null,
+      "KC": 0.892713,
+      "KCR": 0.625,
+      "LUFS_dev": 0.438982,
+      "LRA": 7.553143,
+      "SC": 23.14491
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/ACE+MUSE_S5.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S5_4642464_1781516310",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S5_4642464_1781516310/demucs/htdemucs_ft/ACE+MUSE_S5/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S5_4642464_1781516310/demucs/htdemucs_ft/ACE+MUSE_S5/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S5_4642464_1781516310/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_MUSE_S5_4642464_1781516310/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "F# minor",
+    "duration_sec": 240.0,
+    "supporting_values": {
+      "LUFS": -13.508051,
+      "note_count": 591,
+      "interval_count": 590,
+      "kcr_valid_windows": 24,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.181356,
+      "PR": 66.0,
+      "PS": 5.532745,
+      "IKNR": 0.984772,
+      "IKCR": null,
+      "KC": 0.837535,
+      "KCR": 0.521739,
+      "LUFS_dev": 1.508051,
+      "LRA": 8.998378,
+      "SC": 21.683396
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/ACE_S1.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S1_4274784_1781516311",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S1_4274784_1781516311/demucs/htdemucs_ft/ACE_S1/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S1_4274784_1781516311/demucs/htdemucs_ft/ACE_S1/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S1_4274784_1781516311/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S1_4274784_1781516311/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "D minor",
+    "duration_sec": 209.52,
+    "supporting_values": {
+      "LUFS": -12.760277,
+      "note_count": 368,
+      "interval_count": 367,
+      "kcr_valid_windows": 20,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.381471,
+      "PR": 75.0,
+      "PS": 12.414826,
+      "IKNR": 0.959239,
+      "IKCR": null,
+      "KC": 0.841277,
+      "KCR": 0.578947,
+      "LUFS_dev": 0.760277,
+      "LRA": 8.014334,
+      "SC": 22.324547
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/ACE_S2.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S2_4153128_1781516311",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S2_4153128_1781516311/demucs/htdemucs_ft/ACE_S2/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S2_4153128_1781516311/demucs/htdemucs_ft/ACE_S2/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S2_4153128_1781516311/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S2_4153128_1781516311/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "E major",
+    "duration_sec": 204.28,
+    "supporting_values": {
+      "LUFS": -11.58483,
+      "note_count": 266,
+      "interval_count": 265,
+      "kcr_valid_windows": 18,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.260377,
+      "PR": 70.0,
+      "PS": 7.918431,
+      "IKNR": 0.943609,
+      "IKCR": null,
+      "KC": 0.812246,
+      "KCR": 0.647059,
+      "LUFS_dev": 0.41517,
+      "LRA": 3.58723,
+      "SC": 21.880585
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/ACE_S3.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S3_3740856_1781516313",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S3_3740856_1781516313/demucs/htdemucs_ft/ACE_S3/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S3_3740856_1781516313/demucs/htdemucs_ft/ACE_S3/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S3_3740856_1781516313/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S3_3740856_1781516313/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "C minor",
+    "duration_sec": 184.96,
+    "supporting_values": {
+      "LUFS": -10.948004,
+      "note_count": 342,
+      "interval_count": 341,
+      "kcr_valid_windows": 19,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.237537,
+      "PR": 63.0,
+      "PS": 12.520541,
+      "IKNR": 0.953216,
+      "IKCR": null,
+      "KC": 0.926559,
+      "KCR": 0.277778,
+      "LUFS_dev": 1.051996,
+      "LRA": 6.918415,
+      "SC": 23.992427
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/ACE_S4.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S4_3328536_1781516312",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S4_3328536_1781516312/demucs/htdemucs_ft/ACE_S4/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S4_3328536_1781516312/demucs/htdemucs_ft/ACE_S4/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S4_3328536_1781516312/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S4_3328536_1781516312/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "F minor",
+    "duration_sec": 171.0,
+    "supporting_values": {
+      "LUFS": -11.727816,
+      "note_count": 337,
+      "interval_count": 336,
+      "kcr_valid_windows": 17,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.229167,
+      "PR": 74.0,
+      "PS": 8.5013,
+      "IKNR": 0.916914,
+      "IKCR": null,
+      "KC": 0.885566,
+      "KCR": 0.25,
+      "LUFS_dev": 0.272184,
+      "LRA": 6.478063,
+      "SC": 23.612829
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/ACE_S5.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S5_4660992_1781516314",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S5_4660992_1781516314/demucs/htdemucs_ft/ACE_S5/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S5_4660992_1781516314/demucs/htdemucs_ft/ACE_S5/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S5_4660992_1781516314/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/ACE_S5_4660992_1781516314/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "C# minor",
+    "duration_sec": 240.0,
+    "supporting_values": {
+      "LUFS": -12.896198,
+      "note_count": 372,
+      "interval_count": 371,
+      "kcr_valid_windows": 22,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.3531,
+      "PR": 74.0,
+      "PS": 10.007704,
+      "IKNR": 0.884409,
+      "IKCR": null,
+      "KC": 0.735249,
+      "KCR": 0.619048,
+      "LUFS_dev": 0.896198,
+      "LRA": 6.378244,
+      "SC": 22.039703
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/MINIMAX_S1.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S1_6995615_1781516316",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S1_6995615_1781516316/demucs/htdemucs_ft/MINIMAX_S1/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S1_6995615_1781516316/demucs/htdemucs_ft/MINIMAX_S1/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S1_6995615_1781516316/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S1_6995615_1781516316/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "E- major",
+    "duration_sec": 218.302,
+    "supporting_values": {
+      "LUFS": -12.827799,
+      "note_count": 475,
+      "interval_count": 474,
+      "kcr_valid_windows": 21,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.238397,
+      "PR": 62.0,
+      "PS": 8.443394,
+      "IKNR": 0.974737,
+      "IKCR": null,
+      "KC": 0.788163,
+      "KCR": 0.45,
+      "LUFS_dev": 0.827799,
+      "LRA": 6.288834,
+      "SC": 22.937948
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/MINIMAX_S2.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S2_6527870_1781516318",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S2_6527870_1781516318/demucs/htdemucs_ft/MINIMAX_S2/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S2_6527870_1781516318/demucs/htdemucs_ft/MINIMAX_S2/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S2_6527870_1781516318/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S2_6527870_1781516318/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "D minor",
+    "duration_sec": 203.697,
+    "supporting_values": {
+      "LUFS": -11.245313,
+      "note_count": 351,
+      "interval_count": 350,
+      "kcr_valid_windows": 19,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.174286,
+      "PR": 63.0,
+      "PS": 7.17374,
+      "IKNR": 0.974359,
+      "IKCR": null,
+      "KC": 0.678174,
+      "KCR": 0.555556,
+      "LUFS_dev": 0.754687,
+      "LRA": 5.465615,
+      "SC": 22.627005
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/MINIMAX_S3.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S3_5802404_1781516318",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S3_5802404_1781516318/demucs/htdemucs_ft/MINIMAX_S3/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S3_5802404_1781516318/demucs/htdemucs_ft/MINIMAX_S3/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S3_5802404_1781516318/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S3_5802404_1781516318/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "G# minor",
+    "duration_sec": 181.034,
+    "supporting_values": {
+      "LUFS": -10.675009,
+      "note_count": 468,
+      "interval_count": 467,
+      "kcr_valid_windows": 18,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.094218,
+      "PR": 54.0,
+      "PS": 3.94384,
+      "IKNR": 0.997863,
+      "IKCR": null,
+      "KC": 0.807387,
+      "KCR": 0.294118,
+      "LUFS_dev": 1.324991,
+      "LRA": 7.56077,
+      "SC": 23.761468
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/MINIMAX_S4.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S4_5349720_1781516321",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S4_5349720_1781516321/demucs/htdemucs_ft/MINIMAX_S4/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S4_5349720_1781516321/demucs/htdemucs_ft/MINIMAX_S4/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S4_5349720_1781516321/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S4_5349720_1781516321/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "G major",
+    "duration_sec": 166.905,
+    "supporting_values": {
+      "LUFS": -9.872965,
+      "note_count": 597,
+      "interval_count": 596,
+      "kcr_valid_windows": 17,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.17953,
+      "PR": 34.0,
+      "PS": 4.054917,
+      "IKNR": 0.991625,
+      "IKCR": null,
+      "KC": 0.90874,
+      "KCR": 0.125,
+      "LUFS_dev": 2.127035,
+      "LRA": 7.384182,
+      "SC": 24.058118
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/MINIMAX_S5.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S5_7583017_1781516322",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S5_7583017_1781516322/demucs/htdemucs_ft/MINIMAX_S5/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S5_7583017_1781516322/demucs/htdemucs_ft/MINIMAX_S5/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S5_7583017_1781516322/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MINIMAX_S5_7583017_1781516322/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "F# minor",
+    "duration_sec": 236.635,
+    "supporting_values": {
+      "LUFS": -9.499932,
+      "note_count": 685,
+      "interval_count": 684,
+      "kcr_valid_windows": 24,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.106725,
+      "PR": 56.0,
+      "PS": 8.035373,
+      "IKNR": 0.954745,
+      "IKCR": null,
+      "KC": 0.660507,
+      "KCR": 0.434783,
+      "LUFS_dev": 2.500068,
+      "LRA": 5.267447,
+      "SC": 23.522909
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/MurekaV9_S1.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S1_4584220_1781516322",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S1_4584220_1781516322/demucs/htdemucs_ft/MurekaV9_S1/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S1_4584220_1781516322/demucs/htdemucs_ft/MurekaV9_S1/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S1_4584220_1781516322/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S1_4584220_1781516322/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "C minor",
+    "duration_sec": 190.95,
+    "supporting_values": {
+      "LUFS": -15.443931,
+      "note_count": 411,
+      "interval_count": 410,
+      "kcr_valid_windows": 18,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.312195,
+      "PR": 62.0,
+      "PS": 10.154901,
+      "IKNR": 0.992701,
+      "IKCR": null,
+      "KC": 0.74171,
+      "KCR": 0.705882,
+      "LUFS_dev": 3.443931,
+      "LRA": 4.280776,
+      "SC": 22.520405
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/MurekaV9_S2.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S2_4731551_1781516324",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S2_4731551_1781516324/demucs/htdemucs_ft/MurekaV9_S2/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S2_4731551_1781516324/demucs/htdemucs_ft/MurekaV9_S2/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S2_4731551_1781516324/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S2_4731551_1781516324/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "D minor",
+    "duration_sec": 197.07,
+    "supporting_values": {
+      "LUFS": -15.85531,
+      "note_count": 432,
+      "interval_count": 431,
+      "kcr_valid_windows": 18,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.303944,
+      "PR": 73.0,
+      "PS": 8.580427,
+      "IKNR": 0.93287,
+      "IKCR": null,
+      "KC": 0.749173,
+      "KCR": 0.588235,
+      "LUFS_dev": 3.85531,
+      "LRA": 6.179099,
+      "SC": 22.511511
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/MurekaV9_S3.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S3_4363537_1781516324",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S3_4363537_1781516324/demucs/htdemucs_ft/MurekaV9_S3/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S3_4363537_1781516324/demucs/htdemucs_ft/MurekaV9_S3/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S3_4363537_1781516324/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S3_4363537_1781516324/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "B major",
+    "duration_sec": 181.75,
+    "supporting_values": {
+      "LUFS": -13.482394,
+      "note_count": 409,
+      "interval_count": 408,
+      "kcr_valid_windows": 18,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.188725,
+      "PR": 70.0,
+      "PS": 9.167761,
+      "IKNR": 0.95599,
+      "IKCR": null,
+      "KC": 0.757849,
+      "KCR": 0.529412,
+      "LUFS_dev": 1.482394,
+      "LRA": 5.13172,
+      "SC": 23.503814
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/MurekaV9_S4.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S4_3998032_1781516324",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S4_3998032_1781516324/demucs/htdemucs_ft/MurekaV9_S4/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S4_3998032_1781516324/demucs/htdemucs_ft/MurekaV9_S4/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S4_3998032_1781516324/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S4_3998032_1781516324/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "G major",
+    "duration_sec": 166.51,
+    "supporting_values": {
+      "LUFS": -16.571511,
+      "note_count": 410,
+      "interval_count": 409,
+      "kcr_valid_windows": 17,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.195599,
+      "PR": 61.0,
+      "PS": 9.64503,
+      "IKNR": 0.941463,
+      "IKCR": null,
+      "KC": 0.87016,
+      "KCR": 0.25,
+      "LUFS_dev": 4.571511,
+      "LRA": 8.282835,
+      "SC": 24.606264
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/MurekaV9_S5.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S5_5850636_1781516326",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S5_5850636_1781516326/demucs/htdemucs_ft/MurekaV9_S5/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S5_5850636_1781516326/demucs/htdemucs_ft/MurekaV9_S5/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S5_5850636_1781516326/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/MurekaV9_S5_5850636_1781516326/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "A major",
+    "duration_sec": 243.71,
+    "supporting_values": {
+      "LUFS": -16.14859,
+      "note_count": 589,
+      "interval_count": 588,
+      "kcr_valid_windows": 25,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.142857,
+      "PR": 75.0,
+      "PS": 8.023374,
+      "IKNR": 0.955857,
+      "IKCR": null,
+      "KC": 0.792539,
+      "KCR": 0.666667,
+      "LUFS_dev": 4.14859,
+      "LRA": 7.772776,
+      "SC": 23.153853
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/SongEcho_S1.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S1_3957792_1781516327",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S1_3957792_1781516327/demucs/htdemucs_ft/SongEcho_S1/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S1_3957792_1781516327/demucs/htdemucs_ft/SongEcho_S1/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S1_3957792_1781516327/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S1_3957792_1781516327/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "C minor",
+    "duration_sec": 209.52,
+    "supporting_values": {
+      "LUFS": -15.659998,
+      "note_count": 517,
+      "interval_count": 516,
+      "kcr_valid_windows": 21,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.277132,
+      "PR": 65.0,
+      "PS": 8.824366,
+      "IKNR": 0.988395,
+      "IKCR": null,
+      "KC": 0.727787,
+      "KCR": 0.5,
+      "LUFS_dev": 3.659998,
+      "LRA": 2.210121,
+      "SC": 22.461989
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/SongEcho_S2.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S2_3968736_1781516327",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S2_3968736_1781516327/demucs/htdemucs_ft/SongEcho_S2/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S2_3968736_1781516327/demucs/htdemucs_ft/SongEcho_S2/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S2_3968736_1781516327/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S2_3968736_1781516327/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "D minor",
+    "duration_sec": 204.28,
+    "supporting_values": {
+      "LUFS": -14.69807,
+      "note_count": 372,
+      "interval_count": 371,
+      "kcr_valid_windows": 19,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.15903,
+      "PR": 68.0,
+      "PS": 5.858726,
+      "IKNR": 0.973118,
+      "IKCR": null,
+      "KC": 0.793651,
+      "KCR": 0.166667,
+      "LUFS_dev": 2.69807,
+      "LRA": 2.621941,
+      "SC": 21.166213
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/SongEcho_S3.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S3_3449664_1781516328",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S3_3449664_1781516328/demucs/htdemucs_ft/SongEcho_S3/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S3_3449664_1781516328/demucs/htdemucs_ft/SongEcho_S3/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S3_3449664_1781516328/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S3_3449664_1781516328/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "B major",
+    "duration_sec": 184.96,
+    "supporting_values": {
+      "LUFS": -12.915466,
+      "note_count": 382,
+      "interval_count": 381,
+      "kcr_valid_windows": 18,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.322835,
+      "PR": 62.0,
+      "PS": 10.047004,
+      "IKNR": 0.91623,
+      "IKCR": null,
+      "KC": 0.706583,
+      "KCR": 0.352941,
+      "LUFS_dev": 0.915466,
+      "LRA": 5.623505,
+      "SC": 23.043837
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/SongEcho_S4.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S4_3322296_1781516329",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S4_3322296_1781516329/demucs/htdemucs_ft/SongEcho_S4/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S4_3322296_1781516329/demucs/htdemucs_ft/SongEcho_S4/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S4_3322296_1781516329/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S4_3322296_1781516329/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "G major",
+    "duration_sec": 171.0,
+    "supporting_values": {
+      "LUFS": -14.543572,
+      "note_count": 401,
+      "interval_count": 400,
+      "kcr_valid_windows": 17,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.2325,
+      "PR": 73.0,
+      "PS": 9.193748,
+      "IKNR": 0.982544,
+      "IKCR": null,
+      "KC": 0.905525,
+      "KCR": 0.375,
+      "LUFS_dev": 2.543572,
+      "LRA": 6.829944,
+      "SC": 22.71562
+    }
+  },
+  {
+    "audio_path": "/Users/xy/Desktop/1/code/music/english/SongEcho_S5.mp3",
+    "work_dir": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S5_4645608_1781516329",
+    "intermediate_files": {
+      "vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S5_4645608_1781516329/demucs/htdemucs_ft/SongEcho_S5/vocals.wav",
+      "no_vocals_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S5_4645608_1781516329/demucs/htdemucs_ft/SongEcho_S5/no_vocals.wav",
+      "vocals_mono_wav": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S5_4645608_1781516329/vocals_mono.wav",
+      "vocals_midi": "/Users/xy/Desktop/1/code/music/songecho_anlysis/.cover_metrics_work/SongEcho_S5_4645608_1781516329/basic_pitch/vocals_mono_basic_pitch.mid"
+    },
+    "global_key": "A major",
+    "duration_sec": 240.0,
+    "supporting_values": {
+      "LUFS": -14.584189,
+      "note_count": 507,
+      "interval_count": 506,
+      "kcr_valid_windows": 23,
+      "ikcr": {
+        "status": "skipped",
+        "reason": "autochord is not installed on this machine"
+      }
+    },
+    "metrics": {
+      "LLR": 0.211462,
+      "PR": 68.0,
+      "PS": 8.019038,
+      "IKNR": 0.974359,
+      "IKCR": null,
+      "KC": 0.850032,
+      "KCR": 0.772727,
+      "LUFS_dev": 2.584189,
+      "LRA": 9.030771,
+      "SC": 21.761209
+    }
+  }
+]
