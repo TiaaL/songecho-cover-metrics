@@ -1,115 +1,100 @@
-# cover_metrics
+# AI Cover Song Evaluation Demo
 
-输入一个 cover 音频，输出客观指标（方案见 `客观工具方案_定稿v3.md`）。
+This repository contains a reproducible diagnostic pipeline for evaluating AI-generated cover songs in a DAFx26 demo submission. It combines expert listening scores with lightweight MIR features to inspect melody, harmony, key consistency, style matching, and production quality across 30 generated samples.
 
-## 脚本
+## Evaluation Framework
 
-| 文件 | 平台 | 用途 |
-|------|------|------|
-| `extract_metrics.py` | Mac | 输出 9 个 Mac 侧指标 CSV：LLR、PR、PS、IKNR、KC、KCR、LUFS、LRA、SC |
-| `extract_ikcr.py` | Windows | 输入 `no_vocals.wav` + `vocals.mid`，输出 IKCR |
-| `run_spearman.py` | Mac/Windows | 输入 `results.csv`，输出 Spearman 相关表 |
-| `cover_metrics.py` | Mac/Windows | 底层完整 JSON 版本，供调试和复用 |
+The demo uses five expert-rated dimensions:
 
-## Mac：跑 9 个指标
+| ID | Dimension | What is assessed |
+| --- | --- | --- |
+| D1 | Melody plausibility | Pitch accuracy, melodic contour, and solo coherence |
+| D2 | Harmonic plausibility | Chord progression quality and melody-harmony compatibility |
+| D3 | Key consistency | Tonal-center stability and unintended key drift |
+| D4 | Style consistency | Match between the prompt style and the generated arrangement |
+| D5 | Arrangement and production quality | Instrument completeness, timbre quality, mix balance, and frequency coverage |
 
-安装依赖：
+Scores are stored in `data/annotations/evaluation_scores.csv`. The full listening notes are intentionally not required to reproduce the numeric analysis.
 
-```bash
-pip install -r requirements-mac.txt
+## Objective Metrics
+
+The released pipeline computes nine objective metrics. It does not include raw audio, copyrighted material, Windows-only scripts, or any autochord code.
+
+| Metric | Dimension | Definition | Expected relation |
+| --- | --- | --- | --- |
+| LLR | D1 | Large-leap ratio in the transcribed vocal melody | Negative |
+| PR | D1 | Vocal pitch range in semitones | Descriptive |
+| PS | D1 | Standard deviation of adjacent melodic intervals | Negative |
+| IKNR | D2/D3 | Ratio of vocal notes inside the detected global key | Positive |
+| KC | D3 | `music21` key-analysis confidence | Positive |
+| KCR | D3 | Key-change rate across fixed 10-second vocal-MIDI windows | Negative |
+| LUFS | D5 | Integrated loudness of the stereo mix | Used as `abs(LUFS + 12)` |
+| LRA | D5 | Loudness range | Positive |
+| SC | D5 | Mean spectral contrast | Positive |
+
+D4 is kept as an expert-only dimension because style matching requires semantic listening beyond the scope of these MIR features.
+
+## Repository Layout
+
+```text
+data/
+  annotations/evaluation_scores.csv
+  sample_list.csv
+features/
+  extracted_features.csv
+scripts/
+  01_demucs_separate.sh
+  02_basic_pitch.py
+  03_extract_d1.py
+  04_extract_d2d3.py
+  05_extract_d5.py
+  06_spearman_analysis.py
+figures/
+  spearman_table.png
+  daw_spectrum_examples/
+audio_examples/
 ```
 
-运行：
+`audio_examples/` and `figures/daw_spectrum_examples/` are placeholders for optional demo material. Raw audio is not included in this repository for copyright reasons.
+
+## Environment
 
 ```bash
-python extract_metrics.py /path/to/cover.wav
+pip install -r requirements.txt
 ```
 
-底层 JSON 调试：
+The scripts also require `ffmpeg` and a working Python environment supported by Demucs and basic-pitch.
+
+## Reproduce
+
+Place local evaluation audio files under `audio/`. File names should match `data/sample_list.csv`.
 
 ```bash
-python cover_metrics.py /path/to/cover.wav          # 输出格式化 JSON
-python cover_metrics.py cover.wav --compact         # 单行 JSON
-python cover_metrics.py cover.wav --force           # 忽略缓存重算中间文件
-python cover_metrics.py cover.wav --work-dir DIR    # 指定中间文件目录（默认 .cover_metrics_work）
+bash scripts/01_demucs_separate.sh audio separated
+python scripts/02_basic_pitch.py --separated-dir separated/htdemucs_ft --midi-dir midi
+python scripts/03_extract_d1.py --midi-dir midi --output features/d1_features.csv
+python scripts/04_extract_d2d3.py --midi-dir midi --output features/d2d3_features.csv
+python scripts/05_extract_d5.py --audio-dir audio --output features/d5_features.csv
+python scripts/06_spearman_analysis.py
 ```
 
-Pipeline：Demucs（htdemucs_ft，--two-stems vocals）→ ffmpeg 转 mono → basic-pitch → 各指标。
-中间文件按音频签名缓存，重复跑同一文件不会重算。
+`scripts/06_spearman_analysis.py` merges the D1, D2/D3, and D5 feature tables into `features/extracted_features.csv` if that file is not already present, then writes `figures/spearman_table.csv` and `figures/spearman_table.png`.
 
-## Windows：跑 IKCR
+## Result Summary
 
-Windows 需要的仓库文件：
+The included 30-sample analysis shows that LLR has the clearest relationship with expert melody scores (`rho = -0.429`, `p = 0.018`). KCR follows the expected negative direction for key consistency but is not significant in this small sample. The production metrics are weakly correlated with D5, which is expected because D5 includes both signal-level mix quality and higher-level arrangement completeness.
 
-- `extract_ikcr.py`
-- `requirements-windows.txt`
+These results support the demo's main claim: automatic features are useful as diagnostic cues, but expert listening remains necessary for harmonic function, style matching, and arrangement-level judgments.
 
-从 Mac 拷到 Windows 的每个样本文件：
+## Citation
 
-- Demucs 输出的 `no_vocals.wav`
-- basic-pitch 输出的 `vocals.mid`
+If you use this demo pipeline, please cite:
 
-安装依赖：
-
-```bash
-pip install -r requirements-windows.txt
-```
-
-运行：
-
-```bash
-python extract_ikcr.py separated/htdemucs_ft/song1_model1/no_vocals.wav midi/song1_model1_vocals.mid
-```
-
-`audio/`、`separated/`、`midi/` 不上传 GitHub，需要本地自行准备或从 Mac 拷贝。
-
-## 10 个指标
-
-| 缩写 | 含义 | 维度 | 数据源 | 工具 |
-|------|------|------|--------|------|
-| LLR | 大跳比例（音程>7） | D1 | vocals.mid | pretty_midi |
-| PR | 音域范围 | D1 | vocals.mid | pretty_midi |
-| PS | 音程变化标准差 | D1 | vocals.mid | pretty_midi |
-| IKNR | 调内音比例 | D2/D3 | vocals.mid | music21 |
-| IKCR | 调内和弦比例 | D2 | no_vocals.wav | autochord+music21 |
-| KC | 调性置信度 | D3 | vocals.mid | music21 |
-| KCR | 调性变化率（固定 10 秒窗口） | D3 | vocals.mid | music21 |
-| LUFS_dev | 综合响度偏差 \|LUFS-(-12)\| | D5 | 原始 audio(stereo) | pyloudnorm |
-| LRA | 响度范围 | D5 | 原始 audio(stereo) | pyloudnorm |
-| SC | 频谱对比度 | D5 | 原始 audio(转 mono) | librosa |
-
-KCR 用固定 10 秒不重叠窗口（非段落标注）。
-
-## 平台说明
-
-**IKCR 依赖 autochord，autochord 不支持 Mac (Apple Silicon)。**
-- Mac 上：IKCR 输出 `null`（`status: skipped`），其余 9 个指标正常。
-- Windows 上：`pip install autochord` 后 IKCR 自动计算。
-
-30 个样本的 IKCR 列需在 Windows 上单独补跑。
-
-## 相关分析
-
-手动合并 D1-D5 评分、Mac 侧 9 个指标和 Windows 侧 IKCR 后，写入 `results.csv`，再运行：
-
-```bash
-python run_spearman.py results.csv
-```
-
-## 输出示例
-
-```json
-{
-  "audio_path": "...",
-  "global_key": "C minor",
-  "duration_sec": 209.52,
-  "supporting_values": { "LUFS": -15.66, "note_count": 517, ... },
-  "metrics": {
-    "LLR": 0.277, "PR": 65.0, "PS": 8.824,
-    "IKNR": 0.988, "IKCR": null, "KC": 0.728, "KCR": 0.5,
-    "LUFS_dev": 3.66, "LRA": 2.21, "SC": 22.46
-  }
+```bibtex
+@misc{ai_cover_evaluation_demo_2026,
+  title = {AI Cover Song Evaluation Demo: Objective Diagnostics and Expert Ratings},
+  author = {Anonymous},
+  year = {2026},
+  note = {DAFx26 demo submission}
 }
 ```
-
-出错时向 stderr 打印 `{"error": "..."}` 并以退出码 1 结束。

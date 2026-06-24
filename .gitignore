@@ -16,8 +16,23 @@ __pycache__/
 audio/
 separated/
 midi/
+audio_examples/*
+!audio_examples/README.md
+figures/daw_spectrum_examples/*
+!figures/daw_spectrum_examples/README.md
 
 # Logs and scratch outputs
 *.log
-results/*.partial.json
+results/
 
+
+# Large generated archives and local render state
+.cover_metrics_work.zip
+.mplconfig/
+
+# Local paper/demo drafts outside the reproducibility repo
+DAFx26_tmpl_demo_filled.tex
+dafx26_demo_final.md
+make_pipeline_figure.py
+pipeline.*
+pipeline_flow.png
