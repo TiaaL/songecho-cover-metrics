@@ -1,24 +1,24 @@
-# AI Cover Song Evaluation Demo
+# Time-Stamped Musical Error Diagnosis for AI-Generated Cover Songs
 
-This repository contains a reproducible diagnostic pipeline for evaluating AI-generated cover songs in a DAFx26 demo submission. It combines expert listening scores with lightweight MIR features to inspect melody, harmony, key consistency, style matching, and production quality across 30 generated samples.
+This repository provides the code and data tables for evaluating AI-generated cover songs, accompanying a DAFx 2026 demo paper. The pipeline pairs expert listening scores with MIR features to diagnose melody, harmony, key stability, style match, and production quality across 30 generated samples from 6 generation systems.
 
-## Evaluation Framework
+## Evaluation framework
 
-The demo uses five expert-rated dimensions:
+The evaluation uses five expert-rated dimensions:
 
 | ID | Dimension | What is assessed |
 | --- | --- | --- |
-| D1 | Melody plausibility | Pitch accuracy, melodic contour, and solo coherence |
-| D2 | Harmonic plausibility | Chord progression quality and melody-harmony compatibility |
+| D1 | Melodic pitch accuracy | Pitch accuracy, melodic contour, and salient wrong notes in the generated vocal melody |
+| D2 | Harmonic progression | Harmonic progression quality and functional support for the vocal phrase structure |
 | D3 | Key consistency | Tonal-center stability and unintended key drift |
-| D4 | Style consistency | Match between the prompt style and the generated arrangement |
+| D4 | Style consistency | Match between the target style prompt and the generated arrangement |
 | D5 | Arrangement and production quality | Instrument completeness, timbre quality, mix balance, and frequency coverage |
 
-Scores are stored in `data/annotations/evaluation_scores.csv`. The full listening notes are intentionally not required to reproduce the numeric analysis.
+The numeric scores are in `data/annotations/evaluation_scores.csv`. You do not need the full listening notes to reproduce the analysis.
 
-## Objective Metrics
+## Objective metrics
 
-The released pipeline computes nine objective metrics. It does not include raw audio, copyrighted material, Windows-only scripts, or any autochord code.
+The pipeline computes nine objective metrics. It does not include raw audio, copyrighted material, or automated chord-recognition components.
 
 | Metric | Dimension | Definition | Expected relation |
 | --- | --- | --- | --- |
@@ -32,9 +32,9 @@ The released pipeline computes nine objective metrics. It does not include raw a
 | LRA | D5 | Loudness range | Positive |
 | SC | D5 | Mean spectral contrast | Positive |
 
-D4 is kept as an expert-only dimension because style matching requires semantic listening beyond the scope of these MIR features.
+We keep D4 as an expert-only dimension because style matching requires semantic listening beyond these MIR features.
 
-## Repository Layout
+## Repository layout
 
 ```text
 data/
@@ -55,7 +55,7 @@ figures/
 audio_examples/
 ```
 
-`audio_examples/` and `figures/daw_spectrum_examples/` are placeholders for optional demo material. Raw audio is not included in this repository for copyright reasons.
+`audio_examples/` and `figures/daw_spectrum_examples/` are placeholders for optional demo material. This repository does not include raw audio for copyright reasons.
 
 ## Environment
 
@@ -65,7 +65,7 @@ pip install -r requirements.txt
 
 The scripts also require `ffmpeg` and a working Python environment supported by Demucs and basic-pitch.
 
-## Reproduce
+## Reproducing the analysis
 
 Place local evaluation audio files under `audio/`. File names should match `data/sample_list.csv`.
 
@@ -78,23 +78,23 @@ python scripts/05_extract_d5.py --audio-dir audio --output features/d5_features.
 python scripts/06_spearman_analysis.py
 ```
 
-`scripts/06_spearman_analysis.py` merges the D1, D2/D3, and D5 feature tables into `features/extracted_features.csv` if that file is not already present, then writes `figures/spearman_table.csv` and `figures/spearman_table.png`.
+`scripts/06_spearman_analysis.py` merges the D1, D2/D3, and D5 feature tables into `features/extracted_features.csv` when that file is missing. It then writes `figures/spearman_table.csv` and `figures/spearman_table.png`.
 
-## Result Summary
+## Result summary
 
-The included 30-sample analysis shows that LLR has the clearest relationship with expert melody scores (`rho = -0.429`, `p = 0.018`). KCR follows the expected negative direction for key consistency but is not significant in this small sample. The production metrics are weakly correlated with D5, which is expected because D5 includes both signal-level mix quality and higher-level arrangement completeness.
+In the 30-sample analysis, LLR has the clearest relationship with expert melody scores (`rho = -0.429`, `p = 0.018`). KCR follows the expected negative direction for key consistency, although it is not significant in this small sample. The production metrics are weakly correlated with D5, which is expected because D5 includes both signal-level mix quality and arrangement completeness.
 
-These results support the demo's main claim: automatic features are useful as diagnostic cues, but expert listening remains necessary for harmonic function, style matching, and arrangement-level judgments.
+These results support the demo's main claim: automatic features work well as diagnostic cues, while expert listening is still needed for harmonic function, style consistency, and arrangement-level judgments.
 
 ## Citation
 
 If you use this demo pipeline, please cite:
 
 ```bibtex
-@misc{ai_cover_evaluation_demo_2026,
-  title = {AI Cover Song Evaluation Demo: Objective Diagnostics and Expert Ratings},
-  author = {Anonymous},
+@misc{liang2026coverdiagnosis,
+  title = {Time-Stamped Musical Error Diagnosis for AI-Generated Cover Songs: A Demo System},
+  author = {Yingxin Liang},
   year = {2026},
-  note = {DAFx26 demo submission}
+  note = {Accompanying DAFx 2026 demo paper}
 }
 ```
