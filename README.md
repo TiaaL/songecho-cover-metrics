@@ -1,6 +1,6 @@
 # Time-Stamped Musical Error Diagnosis for AI-Generated Cover Songs
 
-This repository provides the code and data tables for evaluating AI-generated cover songs, accompanying a DAFx 2026 demo paper. The pipeline pairs expert listening scores with MIR features to diagnose melody, harmony, key stability, style match, and production quality across 30 generated samples from 6 generation systems.
+This repository provides the code and data tables for evaluating AI-generated cover songs, accompanying a technical report. The pipeline pairs expert listening scores with MIR features to diagnose melody, harmony, key stability, style match, and production quality across 30 generated samples from 6 generation systems.
 
 ## Evaluation framework
 
@@ -95,6 +95,6 @@ If you use this demo pipeline, please cite:
   title = {Time-Stamped Musical Error Diagnosis for AI-Generated Cover Songs: A Demo System},
   author = {Yingxin Liang},
   year = {2026},
-  note = {Accompanying DAFx 2026 demo paper}
+  note = {Technical report}
 }
 ```
