@@ -30,9 +30,10 @@ results/
 .cover_metrics_work.zip
 .mplconfig/
 
-# Local paper/demo drafts outside the reproducibility repo
-DAFx26_tmpl_demo_filled.tex
-dafx26_demo_final.md
+# Local paper/report drafts outside the reproducibility repo
+*_tmpl_demo_filled.tex
+*_demo_final.md
+*_LaTeX_DEMO/
 make_pipeline_figure.py
 pipeline.*
 pipeline_flow.png
