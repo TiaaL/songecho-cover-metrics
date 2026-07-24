@@ -21,7 +21,7 @@ def melody_metrics(midi_path: Path) -> dict[str, float | str | None]:
     pitches = [int(note.pitch) for note in notes]
     intervals = [abs(pitches[i + 1] - pitches[i]) for i in range(len(pitches) - 1)]
     return {
-        "filename": f"{midi_path.stem}.mp3",
+        "filename": midi_path.stem,
         "LLR": round(sum(i > 7 for i in intervals) / len(intervals), 6) if intervals else None,
         "PR": max(pitches) - min(pitches) if pitches else None,
         "PS": round(float(np.std(intervals)), 6) if intervals else None,

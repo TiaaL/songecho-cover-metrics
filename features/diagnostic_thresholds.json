@@ -1,0 +1,280 @@
+{
+  "D1": {
+    "LLR": {
+      "direction": "negative",
+      "raw_threshold_red": 0.195783,
+      "raw_threshold_yellow": 0.260377,
+      "red_source": "severity_2_q25",
+      "severity_distribution": {
+        "0": {
+          "count": 14,
+          "median": 0.1841275,
+          "q1": 0.161552,
+          "q3": 0.23627775
+        },
+        "1": {
+          "count": 7,
+          "median": 0.260377,
+          "q1": 0.21832200000000002,
+          "q3": 0.29998349999999996
+        },
+        "2": {
+          "count": 9,
+          "median": 0.227357,
+          "q1": 0.195783,
+          "q3": 0.301587
+        }
+      },
+      "threshold_adjusted_for_order": true,
+      "threshold_red": 0.260377,
+      "threshold_yellow": 0.195783,
+      "yellow_source": "severity_1_median"
+    },
+    "PS": {
+      "direction": "negative",
+      "raw_threshold_red": 6.504979,
+      "raw_threshold_yellow": 8.778126,
+      "red_source": "severity_2_q25",
+      "severity_distribution": {
+        "0": {
+          "count": 14,
+          "median": 8.239383499999999,
+          "q1": 6.1874795,
+          "q3": 9.18725125
+        },
+        "1": {
+          "count": 7,
+          "median": 8.778126,
+          "q1": 8.015185500000001,
+          "q3": 9.416035
+        },
+        "2": {
+          "count": 9,
+          "median": 7.167007,
+          "q1": 6.504979,
+          "q3": 8.325256
+        }
+      },
+      "threshold_adjusted_for_order": true,
+      "threshold_red": 8.778126,
+      "threshold_yellow": 6.504979,
+      "yellow_source": "severity_1_median"
+    }
+  },
+  "D2": {
+    "IKNR": {
+      "direction": "positive",
+      "raw_threshold_red": 0.97821325,
+      "raw_threshold_yellow": 0.954745,
+      "red_source": "severity_2_q75",
+      "severity_distribution": {
+        "0": {
+          "count": 7,
+          "median": 0.974359,
+          "q1": 0.9651745,
+          "q3": 0.9870844999999999
+        },
+        "1": {
+          "count": 7,
+          "median": 0.954745,
+          "q1": 0.942536,
+          "q3": 0.965297
+        },
+        "2": {
+          "count": 16,
+          "median": 0.9651075,
+          "q1": 0.916743,
+          "q3": 0.97821325
+        }
+      },
+      "threshold_adjusted_for_order": true,
+      "threshold_red": 0.954745,
+      "threshold_yellow": 0.97821325,
+      "yellow_source": "severity_1_median"
+    }
+  },
+  "D3": {
+    "IKNR": {
+      "direction": "positive",
+      "raw_threshold_red": 0.984772,
+      "raw_threshold_yellow": 0.920133,
+      "red_source": "severity_2_q75",
+      "severity_distribution": {
+        "0": {
+          "count": 19,
+          "median": 0.973118,
+          "q1": 0.9484125,
+          "q3": 0.9786405
+        },
+        "1": {
+          "count": 2,
+          "median": 0.920133,
+          "q1": 0.902271,
+          "q3": 0.9379949999999999
+        },
+        "2": {
+          "count": 9,
+          "median": 0.970976,
+          "q1": 0.91623,
+          "q3": 0.984772
+        }
+      },
+      "threshold_adjusted_for_order": true,
+      "threshold_red": 0.920133,
+      "threshold_yellow": 0.984772,
+      "yellow_source": "severity_1_median"
+    },
+    "KC": {
+      "direction": "positive",
+      "raw_threshold_red": 0.837535,
+      "raw_threshold_yellow": 0.7638940000000001,
+      "red_source": "severity_2_q75",
+      "severity_distribution": {
+        "0": {
+          "count": 19,
+          "median": 0.812246,
+          "q1": 0.773006,
+          "q3": 0.8675170000000001
+        },
+        "1": {
+          "count": 2,
+          "median": 0.7638940000000001,
+          "q1": 0.7495715000000001,
+          "q3": 0.7782165
+        },
+        "2": {
+          "count": 9,
+          "median": 0.708106,
+          "q1": 0.687831,
+          "q3": 0.837535
+        }
+      },
+      "threshold_adjusted_for_order": true,
+      "threshold_red": 0.7638940000000001,
+      "threshold_yellow": 0.837535,
+      "yellow_source": "severity_1_median"
+    },
+    "KCR": {
+      "direction": "negative",
+      "raw_threshold_red": 0.5,
+      "raw_threshold_yellow": 0.6428575000000001,
+      "red_source": "severity_2_q25",
+      "severity_distribution": {
+        "0": {
+          "count": 19,
+          "median": 0.45,
+          "q1": 0.285948,
+          "q3": 0.5672515
+        },
+        "1": {
+          "count": 2,
+          "median": 0.6428575000000001,
+          "q1": 0.6309527500000001,
+          "q3": 0.65476225
+        },
+        "2": {
+          "count": 9,
+          "median": 0.578947,
+          "q1": 0.5,
+          "q3": 0.625
+        }
+      },
+      "threshold_adjusted_for_order": true,
+      "threshold_red": 0.6428575000000001,
+      "threshold_yellow": 0.5,
+      "yellow_source": "severity_1_median"
+    }
+  },
+  "D5": {
+    "LRA": {
+      "direction": "positive",
+      "raw_threshold_red": 7.58962075,
+      "raw_threshold_yellow": 6.829944,
+      "red_source": "severity_2_q75",
+      "severity_distribution": {
+        "0": {
+          "count": 7,
+          "median": 6.179099,
+          "q1": 5.2986675,
+          "q3": 7.472476
+        },
+        "1": {
+          "count": 9,
+          "median": 6.829944,
+          "q1": 5.267447,
+          "q3": 7.772776
+        },
+        "2": {
+          "count": 14,
+          "median": 6.3930255,
+          "q1": 5.216018,
+          "q3": 7.58962075
+        }
+      },
+      "threshold_adjusted_for_order": true,
+      "threshold_red": 6.829944,
+      "threshold_yellow": 7.58962075,
+      "yellow_source": "severity_1_median"
+    },
+    "LUFS_dev": {
+      "direction": "negative",
+      "raw_threshold_red": 0.5361862499999996,
+      "raw_threshold_yellow": 2.5000680000000006,
+      "red_source": "severity_2_q25",
+      "severity_distribution": {
+        "0": {
+          "count": 7,
+          "median": 2.1270349999999993,
+          "q1": 1.4036925,
+          "q3": 3.2766899999999994
+        },
+        "1": {
+          "count": 9,
+          "median": 2.5000680000000006,
+          "q1": 0.5394989999999993,
+          "q3": 2.5841890000000003
+        },
+        "2": {
+          "count": 14,
+          "median": 0.9058320000000002,
+          "q1": 0.5361862499999996,
+          "q3": 1.4017062500000002
+        }
+      },
+      "threshold_adjusted_for_order": true,
+      "threshold_red": 2.5000680000000006,
+      "threshold_yellow": 0.5361862499999996,
+      "yellow_source": "severity_1_median"
+    },
+    "SC": {
+      "direction": "positive",
+      "raw_threshold_red": 23.4552045,
+      "raw_threshold_yellow": 22.71562,
+      "red_source": "severity_2_q75",
+      "severity_distribution": {
+        "0": {
+          "count": 7,
+          "median": 23.503814,
+          "q1": 22.569257999999998,
+          "q3": 23.909793
+        },
+        "1": {
+          "count": 9,
+          "median": 22.71562,
+          "q1": 22.324547,
+          "q3": 23.153853
+        },
+        "2": {
+          "count": 14,
+          "median": 22.8392615,
+          "q1": 22.47570075,
+          "q3": 23.4552045
+        }
+      },
+      "threshold_adjusted_for_order": true,
+      "threshold_red": 22.71562,
+      "threshold_yellow": 23.4552045,
+      "yellow_source": "severity_1_median"
+    }
+  }
+}

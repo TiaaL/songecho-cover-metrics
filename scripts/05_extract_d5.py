@@ -28,7 +28,7 @@ def extract_metrics(audio_path: Path) -> dict[str, float | str]:
     contrast = librosa.feature.spectral_contrast(y=y_mono, sr=sr)
 
     return {
-        "filename": audio_path.name,
+        "filename": audio_path.stem,
         "LUFS": round(lufs, 6),
         "LRA": round(lra, 6),
         "SC": round(float(np.mean(contrast)), 6),

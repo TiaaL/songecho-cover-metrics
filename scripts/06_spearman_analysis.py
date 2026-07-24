@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import sys
 from pathlib import Path
 
 import matplotlib
@@ -12,6 +13,46 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy.stats import spearmanr
+
+
+AUDIO_EXTS = {".mp3", ".wav", ".flac", ".m4a"}
+
+
+def join_key(filename: object) -> str:
+    """Normalize a filename to a stem-only join key.
+
+    Extraction scripts emit bare stems while the published tables carry a
+    ``.mp3`` suffix. Stripping a known audio extension makes both forms join,
+    regardless of the user's audio format, without altering any stored values.
+    """
+
+    name = str(filename)
+    stem, dot, ext = name.rpartition(".")
+    if dot and f".{ext.lower()}" in AUDIO_EXTS:
+        return stem
+    return name
+
+
+def merge_on_filename(left: pd.DataFrame, right: pd.DataFrame, *, context: str) -> pd.DataFrame:
+    """Inner-merge on the normalized filename key and warn on dropped rows."""
+
+    merged = left.merge(
+        right.drop(columns=["filename"], errors="ignore"),
+        left_on=left["filename"].map(join_key),
+        right_on=right["filename"].map(join_key),
+        how="inner",
+    ).drop(columns=["key_0"], errors="ignore")
+
+    kept = set(left["filename"].map(join_key)) & set(right["filename"].map(join_key))
+    for side, frame in (("left", left), ("right", right)):
+        dropped = sorted(set(frame["filename"]) - {f for f in frame["filename"] if join_key(f) in kept})
+        if dropped:
+            print(
+                f"WARNING [{context}]: {len(dropped)} {side} sample(s) had no match and "
+                f"were dropped: {', '.join(dropped)}",
+                file=sys.stderr,
+            )
+    return merged
 
 
 CORRELATIONS = [
@@ -57,18 +98,19 @@ def load_features(features_path: Path) -> pd.DataFrame:
     if missing:
         raise FileNotFoundError("Missing feature tables: " + ", ".join(missing))
 
-    features = (
-        pd.read_csv(d1_path)
-        .merge(pd.read_csv(d2d3_path), on="filename", how="inner")
-        .merge(pd.read_csv(d5_path), on="filename", how="inner")
+    features = merge_on_filename(
+        pd.read_csv(d1_path), pd.read_csv(d2d3_path), context="d1+d2d3"
     )
+    features = merge_on_filename(features, pd.read_csv(d5_path), context="+d5")
     features.to_csv(features_path, index=False)
     return features
 
 
 def main() -> int:
     args = parse_args()
-    df = pd.read_csv(args.annotations).merge(load_features(args.features), on="filename", how="inner")
+    df = merge_on_filename(
+        pd.read_csv(args.annotations), load_features(args.features), context="scores+features"
+    )
     df["LUFS_dev"] = (df["LUFS"] - (-12.0)).abs()
 
     rows = []

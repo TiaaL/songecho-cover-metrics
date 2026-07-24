@@ -3,6 +3,7 @@ basic-pitch
 pretty-midi
 music21
 scipy
+scikit-learn
 matplotlib
 pandas
 demucs

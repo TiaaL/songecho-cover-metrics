@@ -37,3 +37,19 @@ results/
 make_pipeline_figure.py
 pipeline.*
 pipeline_flow.png
+ISMIR2026_LBD_*
+DAFx26_*
+*.wiki
+*prd.md
+*PRD.md
+project.md
+
+# Local working/scratch directories not part of the repro repo
+incoming/
+output/
+tmp/
+
+# User-run diagnosis artifacts from scripts/09_diagnose.py (not the published core)
+figures/diagnosis_labels.csv
+figures/diagnosis_vs_human.csv
+figures/diagnosis_vs_human_summary.csv

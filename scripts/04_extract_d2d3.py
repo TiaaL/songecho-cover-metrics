@@ -59,7 +59,7 @@ def extract_metrics(midi_path: Path) -> dict[str, float | str | None]:
     kcr = changes / (len(window_keys) - 1) if len(window_keys) > 1 else None
 
     return {
-        "filename": f"{midi_path.stem}.mp3",
+        "filename": midi_path.stem,
         "IKNR": round(float(iknr), 6) if iknr is not None else None,
         "KC": round(float(kc), 6) if kc is not None else None,
         "KCR": round(float(kcr), 6) if kcr is not None else None,
