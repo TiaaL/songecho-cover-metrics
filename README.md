@@ -1,6 +1,15 @@
-# A Diagnostic Evaluation Framework for AI-Generated Cover Songs
+<div align="center">
 
-Code and data tables for the paper **"A Diagnostic Evaluation Framework for AI-Generated Cover Songs Using Music-Theoretic and Acoustic Features"** ([arXiv:2607.19688](https://arxiv.org/abs/2607.19688)). The pipeline pairs expert listening scores with MIR features to diagnose melody, harmony, key stability, style match, and production quality across 30 generated samples from 6 generation systems.
+# 🎵 A Diagnostic Evaluation Framework for AI-Generated Cover Songs
+
+[![Paper](https://img.shields.io/badge/arXiv-2607.19688-b31b1b.svg)](https://arxiv.org/abs/2607.19688)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+Code and data for the accompanying paper.
+
+</div>
+
+The pipeline pairs expert listening scores with MIR features to diagnose melody, harmony, key stability, style match, and production quality across 30 generated samples from 6 generation systems.
 
 ## Evaluation framework
 
