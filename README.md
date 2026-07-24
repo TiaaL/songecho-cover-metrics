@@ -52,6 +52,7 @@ scripts/
   06_spearman_analysis.py
   07_rule_diagnostic.py
   08_bootstrap_ci.py
+  09_diagnose.py
 figures/
   spearman_table.png
   loo_confusion_matrix.png
@@ -83,11 +84,13 @@ python scripts/08_bootstrap_ci.py        # figures/bootstrap_ci.csv, bootstrap_d
 
 `scripts/06_spearman_analysis.py` reads `features/extracted_features.csv` directly when it exists (otherwise it merges the D1, D2/D3, and D5 tables). `scripts/07_rule_diagnostic.py` learns per-metric diagnostic thresholds and validates the resulting rules against a majority-class baseline with leave-one-out cross-validation. `scripts/08_bootstrap_ci.py` computes paired bootstrap confidence intervals for the rule-vs-baseline deltas.
 
-## Path B — Bring your own audio
+## Path B — Analyze your own audio
 
-You can run the pipeline on your own cover songs. There are two independent goals:
+Feature extraction and diagnosis with the published thresholds do not require expert scores. Correlation analysis and comparison with human judgment do.
 
-**B1. Extract objective features only — no expert scores required.** This gives you the nine MIR/acoustic metrics for your own audio, which you can inspect or compare across systems on their own:
+### B1. Extract features
+
+The following commands extract the nine MIR/acoustic metrics:
 
 ```bash
 bash scripts/01_demucs_separate.sh audio separated
@@ -97,9 +100,25 @@ python scripts/04_extract_d2d3.py --midi-dir midi  --output features/d2d3_featur
 python scripts/05_extract_d5.py   --audio-dir audio --output features/d5_features.csv
 ```
 
-Feature-table `filename` values are the bare file stem (e.g. `song1`), so **any audio format works** — WAV, MP3, FLAC, or M4A all join correctly as long as a sample's audio and MIDI share the same stem.
+Feature tables use the bare filename stem (for example, `song1`). WAV, MP3, FLAC, and M4A inputs can therefore be joined as long as the audio and MIDI files for a sample share the same stem.
 
-**B2. Reproduce the correlation/diagnosis on your audio — this step, and only this step, needs expert scores.** The rule diagnosis and Spearman correlations relate features to human judgment, so they require a `data/annotations/evaluation_scores.csv` you fill in yourself. D1–D5 are integer expert listening ratings from 1 (worst) to 5 (best); there is no automatic scorer. The minimal schema is:
+### B2. Apply the published diagnostic thresholds
+
+`scripts/09_diagnose.py` assigns a severity to D1, D2, D3, and D5 for each cover: `0` acceptable, `1` warning, or `2` severe. D4 is omitted because the pipeline has no objective metric for style matching.
+
+First merge the three tables from B1 on `filename` into one feature table, called `features/my_features.csv` below. Then run:
+
+```bash
+python scripts/09_diagnose.py \
+  --features features/my_features.csv \
+  --out figures/diagnosis_labels.csv
+```
+
+By default, the thresholds are learned from the paper's data. The labels are listening cues, not quality scores: in the 30-sample evaluation, the rules did not significantly outperform a majority-class baseline. A `0` can also mean that no metric was conclusive, rather than that the dimension is confirmed to be error-free.
+
+### B3. Analyze features against your own ratings
+
+To calculate correlations or learn and validate thresholds on another dataset, provide integer ratings from 1 (worst) to 5 (best). The annotation file has this schema:
 
 ```csv
 filename,D1,D2,D3,D4,D5
@@ -107,27 +126,35 @@ song1,4,3,5,2,4
 song2,2,1,3,4,2
 ```
 
-`filename` is matched to the feature tables by stem, so `song1` and `song1.mp3` refer to the same sample. With that file in place, run Path A's three commands (delete or point `--features` away from the shipped `features/extracted_features.csv` so your own features are used). `scripts/06_spearman_analysis.py` prints a warning to stderr and lists any samples that fail to join, so a filename mismatch never silently produces an empty result.
-
-**B3. Get an automatic per-dimension diagnosis of your covers — no expert scores needed.** `scripts/09_diagnose.py` applies the rule thresholds (learned from the published paper data by default) to your feature table and writes a severity label per cover and per dimension: `0` acceptable, `1` warning, `2` severe.
+Use the same stem in the annotation and feature tables. `scripts/06_spearman_analysis.py` reports unmatched samples on stderr. To keep the shipped table unchanged, use a separate path for your combined features:
 
 ```bash
-python scripts/09_diagnose.py --features features/extracted_features.csv --out figures/diagnosis_labels.csv
+python scripts/06_spearman_analysis.py \
+  --annotations data/annotations/my_scores.csv \
+  --features features/my_features.csv
+python scripts/07_rule_diagnostic.py \
+  --annotations data/annotations/my_scores.csv \
+  --features features/my_features.csv
+python scripts/08_bootstrap_ci.py \
+  --annotations data/annotations/my_scores.csv \
+  --features features/my_features.csv
 ```
 
-Output columns are `filename, D1, D2, D3, D5` (D4 style-matching has no objective metric and is never diagnosed). This is fully automatic: audio in, diagnosis out. **It is an advisory signal, not a quality score** — on the paper's 30-sample evaluation the rules do not significantly beat a majority-class baseline (see *Result summary*), so treat the labels as cues that localize where to listen, not as verdicts. A dimension can read `0` because no metric was conclusive, which is not the same as "confirmed fine".
+If `features/my_features.csv` does not exist, script `06` builds it from `d1_features.csv`, `d2d3_features.csv`, and `d5_features.csv` in the same directory.
 
-**B4. Check how well the automatic diagnosis matches your own listening.** If you *also* provide your own expert scores, `09_diagnose.py` lines up the automatic label against your human label for every cover and dimension, and reports the agreement rate:
+### B4. Compare automatic labels with your ratings
+
+Pass your annotations to `09_diagnose.py` to produce a per-sample comparison and an agreement summary:
 
 ```bash
 python scripts/09_diagnose.py \
-  --features features/extracted_features.csv \
-  --annotations data/annotations/evaluation_scores.csv \
+  --features features/my_features.csv \
+  --annotations data/annotations/my_scores.csv \
   --compare-out figures/diagnosis_vs_human.csv \
   --compare-summary figures/diagnosis_vs_human_summary.csv
 ```
 
-Concretely: your 1–5 human ratings are folded to the same 0/1/2 severities, then compared cell by cell against the automatic labels; `figures/diagnosis_vs_human_summary.csv` reports the fraction that agree per dimension. This answers "can I trust the automatic diagnosis on *my* music?" — and it requires your own scores precisely because there is nothing to compare against otherwise. Note this default comparison is *whole-sample re-substitution* (optimistic, not cross-validated); the leave-one-out and bootstrap in `07`/`08` are the unbiased estimates.
+The script maps ratings of 4–5 to `0`, 3 to `1`, and 1–2 to `2`, then reports agreement by dimension. With the command above, diagnosis thresholds still come from the published dataset; `--annotations` supplies only the comparison labels. Use scripts `07` and `08` to evaluate thresholds learned from your own ratings with leave-one-out validation and paired bootstrap confidence intervals.
 
 ## Result summary
 
