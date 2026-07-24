@@ -52,11 +52,21 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--annotations", type=Path, default=Path("data/annotations/evaluation_scores.csv"))
     parser.add_argument("--features", type=Path, default=Path("features/extracted_features.csv"))
-    parser.add_argument("--thresholds-json", type=Path, default=Path("features/diagnostic_thresholds.json"))
-    parser.add_argument("--summary-csv", type=Path, default=Path("figures/loo_accuracy_summary.csv"))
-    parser.add_argument("--confusion-png", type=Path, default=Path("figures/loo_confusion_matrix.png"))
-    parser.add_argument("--binary-summary-csv", type=Path, default=Path("figures/loo_binary_accuracy_summary.csv"))
-    parser.add_argument("--binary-confusion-png", type=Path, default=Path("figures/loo_binary_confusion_matrix.png"))
+    parser.add_argument(
+        "--out-dir",
+        type=Path,
+        default=None,
+        help=(
+            "Redirect all outputs into this directory using their standard file names, "
+            "so runs on your own data do not overwrite the published paper artifacts. "
+            "Any explicit --thresholds-json/--summary-csv/etc. still takes precedence."
+        ),
+    )
+    parser.add_argument("--thresholds-json", type=Path, default=None)
+    parser.add_argument("--summary-csv", type=Path, default=None)
+    parser.add_argument("--confusion-png", type=Path, default=None)
+    parser.add_argument("--binary-summary-csv", type=Path, default=None)
+    parser.add_argument("--binary-confusion-png", type=Path, default=None)
     parser.add_argument(
         "--diagnose-json",
         type=Path,
@@ -375,8 +385,25 @@ def print_summary(title: str, summary: pd.DataFrame) -> None:
     print(display.to_string(index=False))
 
 
+def resolve_outputs(args: argparse.Namespace) -> None:
+    """Fill in output paths: explicit flag > --out-dir > published default location."""
+    defaults = {
+        "thresholds_json": ("features", "diagnostic_thresholds.json"),
+        "summary_csv": ("figures", "loo_accuracy_summary.csv"),
+        "confusion_png": ("figures", "loo_confusion_matrix.png"),
+        "binary_summary_csv": ("figures", "loo_binary_accuracy_summary.csv"),
+        "binary_confusion_png": ("figures", "loo_binary_confusion_matrix.png"),
+    }
+    for attr, (default_dir, basename) in defaults.items():
+        if getattr(args, attr) is not None:
+            continue  # explicit flag wins
+        parent = args.out_dir if args.out_dir is not None else Path(default_dir)
+        setattr(args, attr, parent / basename)
+
+
 def main() -> int:
     args = parse_args()
+    resolve_outputs(args)
     df = load_dataset(args.annotations, args.features)
 
     thresholds = learn_thresholds(df)

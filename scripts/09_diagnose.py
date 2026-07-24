@@ -77,7 +77,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--out",
         type=Path,
-        default=Path("figures/diagnosis_labels.csv"),
+        default=Path("figures/my_diagnosis_labels.csv"),
         help="Output CSV of per-cover D1/D2/D3/D5 severity labels.",
     )
     parser.add_argument(
@@ -89,13 +89,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--compare-out",
         type=Path,
-        default=Path("figures/diagnosis_vs_human.csv"),
+        default=Path("figures/my_diagnosis_vs_human.csv"),
         help="Per-sample per-dimension comparison long table (only with --annotations).",
     )
     parser.add_argument(
         "--compare-summary",
         type=Path,
-        default=Path("figures/diagnosis_vs_human_summary.csv"),
+        default=Path("figures/my_diagnosis_vs_human_summary.csv"),
         help="Per-dimension agreement summary (only with --annotations).",
     )
     return parser.parse_args()

@@ -34,9 +34,19 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--annotations", type=Path, default=Path("data/annotations/evaluation_scores.csv"))
     parser.add_argument("--features", type=Path, default=Path("features/extracted_features.csv"))
-    parser.add_argument("--output-csv", type=Path, default=Path("figures/bootstrap_ci.csv"))
-    parser.add_argument("--output-png", type=Path, default=Path("figures/bootstrap_delta.png"))
-    parser.add_argument("--output-pdf", type=Path, default=Path("figures/bootstrap_delta.pdf"))
+    parser.add_argument(
+        "--out-dir",
+        type=Path,
+        default=None,
+        help=(
+            "Redirect all outputs into this directory using their standard file names, "
+            "so runs on your own data do not overwrite the published paper artifacts. "
+            "Any explicit --output-csv/--output-png/--output-pdf still takes precedence."
+        ),
+    )
+    parser.add_argument("--output-csv", type=Path, default=None)
+    parser.add_argument("--output-png", type=Path, default=None)
+    parser.add_argument("--output-pdf", type=Path, default=None)
     parser.add_argument("--n-boot", type=int, default=10000)
     parser.add_argument("--seed", type=int, default=20260709)
     return parser.parse_args()
@@ -222,8 +232,23 @@ def print_summary(results: pd.DataFrame, n_boot: int, seed: int) -> None:
     print("\nBaseline predictions are fixed full-sample majority predictions; the majority class is not recomputed inside bootstrap resamples.")
 
 
+def resolve_outputs(args: argparse.Namespace) -> None:
+    """Fill in output paths: explicit flag > --out-dir > published default location."""
+    defaults = {
+        "output_csv": "bootstrap_ci.csv",
+        "output_png": "bootstrap_delta.png",
+        "output_pdf": "bootstrap_delta.pdf",
+    }
+    for attr, basename in defaults.items():
+        if getattr(args, attr) is not None:
+            continue  # explicit flag wins
+        parent = args.out_dir if args.out_dir is not None else Path("figures")
+        setattr(args, attr, parent / basename)
+
+
 def main() -> int:
     args = parse_args()
+    resolve_outputs(args)
     rule_diagnostic = load_rule_diagnostic()
     df = rule_diagnostic.load_dataset(args.annotations, args.features)
     loo, _ = rule_diagnostic.run_loo(df)

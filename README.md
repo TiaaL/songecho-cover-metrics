@@ -106,12 +106,12 @@ Feature tables use the bare filename stem (for example, `song1`). WAV, MP3, FLAC
 
 `scripts/09_diagnose.py` assigns a severity to D1, D2, D3, and D5 for each cover: `0` acceptable, `1` warning, or `2` severe. D4 is omitted because the pipeline has no objective metric for style matching.
 
-First merge the three tables from B1 on `filename` into one feature table, called `features/my_features.csv` below. Then run:
+The three tables from B1 first have to be combined on `filename` into one feature table, called `features/my_features.csv` below. Running `scripts/06_spearman_analysis.py --features features/my_features.csv` builds it from the three tables in that directory (see B3), or you can merge them yourself. Then run:
 
 ```bash
 python scripts/09_diagnose.py \
   --features features/my_features.csv \
-  --out figures/diagnosis_labels.csv
+  --out figures/my_diagnosis_labels.csv
 ```
 
 By default, the thresholds are learned from the paper's data. The labels are listening cues, not quality scores: in the 30-sample evaluation, the rules did not significantly outperform a majority-class baseline. A `0` can also mean that no metric was conclusive, rather than that the dimension is confirmed to be error-free.
@@ -126,21 +126,27 @@ song1,4,3,5,2,4
 song2,2,1,3,4,2
 ```
 
-Use the same stem in the annotation and feature tables. `scripts/06_spearman_analysis.py` reports unmatched samples on stderr. To keep the shipped table unchanged, use a separate path for your combined features:
+Use the same stem in the annotation and feature tables. `scripts/06_spearman_analysis.py` reports unmatched samples on stderr. Point `--features` and `--out-dir` at your own paths so the published tables and result artifacts are left unchanged:
 
 ```bash
 python scripts/06_spearman_analysis.py \
   --annotations data/annotations/my_scores.csv \
-  --features features/my_features.csv
+  --features features/my_features.csv \
+  --output-csv figures/my_spearman_table.csv \
+  --output-png figures/my_spearman_table.png
 python scripts/07_rule_diagnostic.py \
   --annotations data/annotations/my_scores.csv \
-  --features features/my_features.csv
+  --features features/my_features.csv \
+  --out-dir figures/my_run
 python scripts/08_bootstrap_ci.py \
   --annotations data/annotations/my_scores.csv \
-  --features features/my_features.csv
+  --features features/my_features.csv \
+  --out-dir figures/my_run
 ```
 
-If `features/my_features.csv` does not exist, script `06` builds it from `d1_features.csv`, `d2d3_features.csv`, and `d5_features.csv` in the same directory.
+`--out-dir` sends every `07`/`08` artifact (thresholds, LOO summaries, confusion matrices, bootstrap CIs, and the forest plot) into that directory under their standard names. Without it, `07`/`08` write to the published locations and would overwrite the paper's results. If `features/my_features.csv` does not exist, script `06` builds it from `d1_features.csv`, `d2d3_features.csv`, and `d5_features.csv` in the same directory.
+
+Note that `07`/`08` here learn and validate thresholds on your ratings, which is different from B2 and B4, where the published thresholds are applied as-is.
 
 ### B4. Compare automatic labels with your ratings
 
@@ -150,11 +156,11 @@ Pass your annotations to `09_diagnose.py` to produce a per-sample comparison and
 python scripts/09_diagnose.py \
   --features features/my_features.csv \
   --annotations data/annotations/my_scores.csv \
-  --compare-out figures/diagnosis_vs_human.csv \
-  --compare-summary figures/diagnosis_vs_human_summary.csv
+  --compare-out figures/my_diagnosis_vs_human.csv \
+  --compare-summary figures/my_diagnosis_vs_human_summary.csv
 ```
 
-The script maps ratings of 4–5 to `0`, 3 to `1`, and 1–2 to `2`, then reports agreement by dimension. With the command above, diagnosis thresholds still come from the published dataset; `--annotations` supplies only the comparison labels. Use scripts `07` and `08` to evaluate thresholds learned from your own ratings with leave-one-out validation and paired bootstrap confidence intervals.
+The script maps ratings of 4–5 to `0`, 3 to `1`, and 1–2 to `2`, then reports agreement by dimension. Diagnosis thresholds still come from the published dataset (as in B2); `--annotations` supplies only the comparison labels, so this measures how well the *paper's* thresholds transfer to your covers. The agreement is a whole-sample resubstitution figure, not cross-validated. To instead learn and validate thresholds on your own ratings, use the leave-one-out and paired-bootstrap runs in B3 (`07` and `08`).
 
 ## Result summary
 
