@@ -98,6 +98,15 @@
         font-size: clamp(1rem, 2vw, 1.2rem);
       }
 
+      .task-details {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 24px;
+        margin: 22px 0 0;
+        color: var(--ink);
+        font-size: 0.94rem;
+      }
+
       .hero-links {
         display: flex;
         flex-wrap: wrap;
@@ -275,15 +284,20 @@
   <body>
     <header class="hero">
       <div class="shell">
-        <p class="eyebrow">MIREX 2026 · Audio examples</p>
+        <p class="eyebrow">MIREX 2026 · Music Audio Generation</p>
         <h1>Cover Song Generation</h1>
         <p class="lede">
           Listen to one source song and six full-length cover generations.
           Each prompt is shown with outputs from ACE-Step 1.5 SFT XL and SongEcho
           for direct comparison.
         </p>
+        <p class="task-details">
+          <span><strong>Task:</strong> MIREX 2026 Cover Song Generation</span>
+          <span><strong>Task Captain:</strong> Yingxin Liang, Rythmix AI</span>
+        </p>
         <nav class="hero-links" aria-label="Page links">
           <a class="button primary" href="#source">Start with the source</a>
+          <a class="button" href="https://music-ir.org/mirex/wiki/2026::Music_Audio_Generation">MIREX Wiki page</a>
           <a class="button" href="https://github.com/TiaaL/songecho-cover-metrics/releases/tag/mirex-2026-audio-v1">Original audio files</a>
         </nav>
       </div>
