@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Playable MIREX 2026 Cover Song Generation examples comparing ACE-Step and SongEcho.">
+    <title>MIREX 2026 Cover Song Generation — Audio Examples</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #172033;
+        --muted: #647087;
+        --paper: #f5f3ee;
+        --card: #ffffff;
+        --line: #d9dde5;
+        --accent: #3157d5;
+        --accent-dark: #203b9c;
+        --soft-blue: #eef2ff;
+        --soft-gold: #fff4d7;
+        --gold: #8b6415;
+        --shadow: 0 18px 50px rgba(31, 42, 68, 0.09);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 8% 0%, rgba(49, 87, 213, 0.12), transparent 28rem),
+          radial-gradient(circle at 94% 20%, rgba(230, 178, 55, 0.13), transparent 24rem),
+          var(--paper);
+        font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.55;
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      a:hover {
+        color: var(--accent-dark);
+      }
+
+      .shell {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .hero {
+        padding: 72px 0 42px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0 0 18px;
+        padding: 7px 12px;
+        border: 1px solid rgba(49, 87, 213, 0.22);
+        border-radius: 999px;
+        color: var(--accent-dark);
+        background: rgba(255, 255, 255, 0.72);
+        font-size: 0.78rem;
+        font-weight: 750;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        content: "";
+      }
+
+      h1 {
+        max-width: 900px;
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(2.55rem, 6vw, 5.4rem);
+        font-weight: 500;
+        letter-spacing: -0.045em;
+        line-height: 0.98;
+      }
+
+      .lede {
+        max-width: 760px;
+        margin: 24px 0 0;
+        color: var(--muted);
+        font-size: clamp(1rem, 2vw, 1.2rem);
+      }
+
+      .hero-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 10px 16px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.8);
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .button.primary {
+        border-color: var(--accent);
+        color: white;
+        background: var(--accent);
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+      }
+
+      .source-card,
+      .prompt-section {
+        border: 1px solid rgba(217, 221, 229, 0.9);
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: var(--shadow);
+      }
+
+      .source-card {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 0.8fr);
+        gap: 28px;
+        align-items: center;
+        padding: 28px;
+      }
+
+      .kicker {
+        margin: 0 0 7px;
+        color: var(--accent);
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+      }
+
+      h2,
+      h3 {
+        margin-top: 0;
+      }
+
+      .source-card h2,
+      .prompt-section h2 {
+        margin-bottom: 8px;
+        font-size: clamp(1.45rem, 3vw, 2rem);
+      }
+
+      .meta {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.93rem;
+      }
+
+      audio {
+        display: block;
+        width: 100%;
+        min-height: 42px;
+      }
+
+      .sections {
+        display: grid;
+        gap: 28px;
+        padding: 32px 0 70px;
+      }
+
+      .prompt-section {
+        padding: 28px;
+        scroll-margin-top: 18px;
+      }
+
+      .prompt-section:target {
+        outline: 3px solid rgba(49, 87, 213, 0.28);
+        outline-offset: 4px;
+      }
+
+      .prompt {
+        max-width: 920px;
+        margin: 16px 0 22px;
+        padding: 15px 17px;
+        border-left: 4px solid #d5a82f;
+        border-radius: 0 10px 10px 0;
+        color: #574719;
+        background: var(--soft-gold);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.88rem;
+      }
+
+      .comparison {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .model-card {
+        min-width: 0;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 15px;
+        background: var(--card);
+      }
+
+      .model-card h3 {
+        margin-bottom: 3px;
+        font-size: 1.08rem;
+      }
+
+      .model-card audio {
+        margin-top: 16px;
+      }
+
+      .asset-link {
+        display: inline-block;
+        font-size: 0.88rem;
+        font-weight: 700;
+        text-underline-offset: 3px;
+      }
+
+      .asset-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+        margin-top: 12px;
+      }
+
+      footer {
+        padding: 28px 0 48px;
+        border-top: 1px solid rgba(100, 112, 135, 0.2);
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      footer p {
+        max-width: 860px;
+        margin: 0;
+      }
+
+      @media (max-width: 760px) {
+        .hero {
+          padding-top: 48px;
+        }
+
+        .source-card,
+        .comparison {
+          grid-template-columns: 1fr;
+        }
+
+        .source-card,
+        .prompt-section {
+          padding: 21px;
+          border-radius: 17px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="shell">
+        <p class="eyebrow">MIREX 2026 · Audio examples</p>
+        <h1>Cover Song Generation</h1>
+        <p class="lede">
+          Listen to one source song and six full-length cover generations.
+          Each prompt is shown with outputs from ACE-Step 1.5 SFT XL and SongEcho
+          for direct comparison.
+        </p>
+        <nav class="hero-links" aria-label="Page links">
+          <a class="button primary" href="#source">Start with the source</a>
+          <a class="button" href="https://github.com/TiaaL/songecho-cover-metrics/releases/tag/mirex-2026-audio-v1">Original audio files</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="source-card" id="source">
+        <div>
+          <p class="kicker">Shared input</p>
+          <h2>Source song</h2>
+          <p class="meta">Full-length stereo MP3 · 2:50</p>
+        </div>
+        <div>
+          <audio controls preload="metadata">
+            <source src="audio/source_original.mp3" type="audio/mpeg">
+            Your browser does not support audio playback.
+          </audio>
+          <div class="asset-links">
+            <a class="asset-link" href="audio/source_original.mp3" download>Download source MP3</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="sections">
+        <section class="prompt-section" id="classic-pop-ballad">
+          <p class="kicker">Prompt 01</p>
+          <h2>Classic pop ballad</h2>
+          <p class="prompt">Warm nostalgic classic pop ballad, expressive piano, acoustic guitar, soft live drums, melodic bass and elegant strings, intimate verses and emotional choruses, preserve the original vocal melody, lyrics and song structure.</p>
+          <div class="comparison">
+            <article class="model-card" id="ace-step-01">
+              <h3>ACE-Step 1.5 SFT XL</h3>
+              <p class="meta">MP3 preview · original: 48 kHz / 24-bit stereo WAV</p>
+              <audio controls preload="metadata">
+                <source src="audio/ace_step_prompt_01_classic_pop_ballad.mp3" type="audio/mpeg">
+              </audio>
+              <div class="asset-links">
+                <a class="asset-link" href="audio/ace_step_prompt_01_classic_pop_ballad.mp3" download>Download MP3</a>
+                <a class="asset-link" href="https://github.com/TiaaL/songecho-cover-metrics/releases/download/mirex-2026-audio-v1/ace_step_prompt_01_classic_pop_ballad.wav">Download original WAV</a>
+              </div>
+            </article>
+            <article class="model-card" id="songecho-01">
+              <h3>SongEcho</h3>
+              <p class="meta">MP3 preview · original: 48 kHz / 16-bit stereo WAV</p>
+              <audio controls preload="metadata">
+                <source src="audio/songecho_prompt_01_classic_pop_ballad.mp3" type="audio/mpeg">
+              </audio>
+              <div class="asset-links">
+                <a class="asset-link" href="audio/songecho_prompt_01_classic_pop_ballad.mp3" download>Download MP3</a>
+                <a class="asset-link" href="https://github.com/TiaaL/songecho-cover-metrics/releases/download/mirex-2026-audio-v1/songecho_prompt_01_classic_pop_ballad.wav">Download original WAV</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="prompt-section" id="indie-rock">
+          <p class="kicker">Prompt 02</p>
+          <h2>Indie rock</h2>
+          <p class="prompt">Indie rock emotional female vocals, pop, folk, dreamy, acoustic guitar, electric guitar, strings, drums, bass, percussion</p>
+          <div class="comparison">
+            <article class="model-card" id="ace-step-02">
+              <h3>ACE-Step 1.5 SFT XL</h3>
+              <p class="meta">MP3 preview · original: 48 kHz / 24-bit stereo WAV</p>
+              <audio controls preload="metadata">
+                <source src="audio/ace_step_prompt_02_indie_rock.mp3" type="audio/mpeg">
+              </audio>
+              <div class="asset-links">
+                <a class="asset-link" href="audio/ace_step_prompt_02_indie_rock.mp3" download>Download MP3</a>
+                <a class="asset-link" href="https://github.com/TiaaL/songecho-cover-metrics/releases/download/mirex-2026-audio-v1/ace_step_prompt_02_indie_rock.wav">Download original WAV</a>
+              </div>
+            </article>
+            <article class="model-card" id="songecho-02">
+              <h3>SongEcho</h3>
+              <p class="meta">MP3 preview · original: 48 kHz / 16-bit stereo WAV</p>
+              <audio controls preload="metadata">
+                <source src="audio/songecho_prompt_02_indie_rock.mp3" type="audio/mpeg">
+              </audio>
+              <div class="asset-links">
+                <a class="asset-link" href="audio/songecho_prompt_02_indie_rock.mp3" download>Download MP3</a>
+                <a class="asset-link" href="https://github.com/TiaaL/songecho-cover-metrics/releases/download/mirex-2026-audio-v1/songecho_prompt_02_indie_rock.wav">Download original WAV</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="prompt-section" id="soul-folk-acapella">
+          <p class="kicker">Prompt 03</p>
+          <h2>Soul folk acapella</h2>
+          <p class="prompt">soul folk acapella, pop, folk, singer-songwriter, mellow</p>
+          <div class="comparison">
+            <article class="model-card" id="ace-step-03">
+              <h3>ACE-Step 1.5 SFT XL</h3>
+              <p class="meta">MP3 preview · original: 48 kHz / 24-bit stereo WAV</p>
+              <audio controls preload="metadata">
+                <source src="audio/ace_step_prompt_03_soul_folk_acapella.mp3" type="audio/mpeg">
+              </audio>
+              <div class="asset-links">
+                <a class="asset-link" href="audio/ace_step_prompt_03_soul_folk_acapella.mp3" download>Download MP3</a>
+                <a class="asset-link" href="https://github.com/TiaaL/songecho-cover-metrics/releases/download/mirex-2026-audio-v1/ace_step_prompt_03_soul_folk_acapella.wav">Download original WAV</a>
+              </div>
+            </article>
+            <article class="model-card" id="songecho-03">
+              <h3>SongEcho</h3>
+              <p class="meta">MP3 preview · original: 48 kHz / 16-bit stereo WAV</p>
+              <audio controls preload="metadata">
+                <source src="audio/songecho_prompt_03_soul_folk_acapella.mp3" type="audio/mpeg">
+              </audio>
+              <div class="asset-links">
+                <a class="asset-link" href="audio/songecho_prompt_03_soul_folk_acapella.mp3" download>Download MP3</a>
+                <a class="asset-link" href="https://github.com/TiaaL/songecho-cover-metrics/releases/download/mirex-2026-audio-v1/songecho_prompt_03_soul_folk_acapella.wav">Download original WAV</a>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="shell">
+        <p>
+          These examples are for explanation only and are not test items.
+          Audio assets are distributed separately from the repository's MIT-licensed source code;
+          review the applicable rights before redistributing them.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      const players = Array.from(document.querySelectorAll("audio"));
+      for (const player of players) {
+        player.addEventListener("play", () => {
+          for (const other of players) {
+            if (other !== player) other.pause();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
