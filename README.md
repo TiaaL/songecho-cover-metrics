@@ -5,15 +5,13 @@
 [![Paper](https://img.shields.io/badge/arXiv-2607.19688-b31b1b.svg)](https://arxiv.org/abs/2607.19688)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-Code and data for the accompanying paper.
+Code and released numerical data for the accompanying paper.
 
 </div>
 
-The pipeline pairs expert listening scores with MIR features to diagnose melody, harmony, key stability, style match, and production quality across 30 generated samples from 6 generation systems.
+This repository pairs expert listening ratings with MIR features to study melody, harmony, key stability, style match, and arrangement/production quality across 30 generated covers from five source songs and six generation systems.
 
 ## Evaluation framework
-
-The evaluation uses five expert-rated dimensions:
 
 | ID | Dimension | What is assessed |
 | --- | --- | --- |
@@ -23,11 +21,11 @@ The evaluation uses five expert-rated dimensions:
 | D4 | Style consistency | Match between the target style prompt and the generated arrangement |
 | D5 | Arrangement and production quality | Instrument completeness, timbre quality, mix balance, and frequency coverage |
 
-The numeric scores are in `data/annotations/evaluation_scores.csv`. You do not need the full listening notes to reproduce the analysis.
+The public numerical ratings are in `data/annotations/evaluation_scores.csv`. The original annotation process also produced time-stamped listening notes, but those notes are not included in this repository.
 
 ## Objective metrics
 
-The pipeline computes nine objective metrics. It does not include raw audio, copyrighted material, or automated chord-recognition components.
+The pipeline computes nine MIR/acoustic metrics. Raw study audio and copyrighted source material are not redistributed.
 
 | Metric | Dimension | Definition | Expected relation |
 | --- | --- | --- | --- |
@@ -41,7 +39,7 @@ The pipeline computes nine objective metrics. It does not include raw audio, cop
 | LRA | D5 | Loudness range | Positive |
 | SC | D5 | Mean spectral contrast | Positive |
 
-We keep D4 as an expert-only dimension because style matching requires semantic listening beyond these MIR features.
+D4 remains expert-only because style matching is not represented by these low-level features. IKNR is used only as a coarse tonal proxy for D2; it is not a chord-function metric.
 
 ## Repository layout
 
@@ -63,15 +61,16 @@ scripts/
   08_bootstrap_ci.py
   09_diagnose.py
 figures/
-  spearman_table.png
+  spearman_table.csv
+  loo_accuracy_summary.csv
+  loo_binary_accuracy_summary.csv
   loo_confusion_matrix.png
   loo_binary_confusion_matrix.png
-  bootstrap_delta.png
-  daw_spectrum_examples/
-audio_examples/
+  bootstrap_ci.csv
+  bootstrap_delta.png/.pdf
 ```
 
-`audio_examples/` and `figures/daw_spectrum_examples/` are placeholders for optional demo material. This repository does not include raw audio for copyright reasons.
+`audio_examples/` and `figures/daw_spectrum_examples/` are placeholders for optional demo material.
 
 ## Environment
 
@@ -79,27 +78,29 @@ audio_examples/
 pip install -r requirements.txt
 ```
 
-The scripts also require `ffmpeg` and a working Python environment supported by Demucs and basic-pitch.
+The extraction pipeline also requires `ffmpeg` and a working Python environment supported by Demucs and Basic Pitch.
 
-## Path A — Reproduce the paper analysis (no audio, no scoring needed)
+## Reproduce the released analysis
 
-The shipped `features/extracted_features.csv` and `data/annotations/evaluation_scores.csv` are enough to reproduce every figure and statistic. **You do not need any audio or your own expert scores for this path.**
+The released ratings and extracted features are sufficient to reproduce the feature-correlation and rule-pilot analyses without the study audio:
 
 ```bash
-python scripts/06_spearman_analysis.py   # figures/spearman_table.csv/.png
-python scripts/07_rule_diagnostic.py     # features/diagnostic_thresholds.json + LOO summaries
-python scripts/08_bootstrap_ci.py        # figures/bootstrap_ci.csv, bootstrap_delta.png/.pdf
+python scripts/06_spearman_analysis.py
+python scripts/07_rule_diagnostic.py
+python scripts/08_bootstrap_ci.py
 ```
 
-`scripts/06_spearman_analysis.py` reads `features/extracted_features.csv` directly when it exists (otherwise it merges the D1, D2/D3, and D5 tables). `scripts/07_rule_diagnostic.py` learns per-metric diagnostic thresholds and validates the resulting rules against a majority-class baseline with leave-one-out cross-validation. `scripts/08_bootstrap_ci.py` computes paired bootstrap confidence intervals for the rule-vs-baseline deltas.
+`06_spearman_analysis.py` reports the nine prespecified Spearman correlations. Its `p` column contains uncorrected p-values; no significance-star column is used. The paper treats these correlations as exploratory and uses a Bonferroni reference threshold of `0.05/9 = 0.0056` for the nine prespecified comparisons.
 
-## Path B — Analyze your own audio
+`07_rule_diagnostic.py` performs genuine leave-one-out evaluation. In each fold, one cover is held out, percentile cutpoints are re-estimated from the remaining 29 covers, and those cutpoints are applied only to the held-out sample. The full-sample `features/diagnostic_thresholds.json` is saved for later diagnosis of new data and is not used to generate the LOO predictions.
 
-Feature extraction and diagnosis with the published thresholds do not require expert scores. Correlation analysis and comparison with human judgment do.
+The fold-wise majority baseline in `07_rule_diagnostic.py` is estimated from the remaining 29 labels. `08_bootstrap_ci.py` uses a fixed full-sample majority baseline for the reported paired-bootstrap comparison. On the released dataset, the fold-wise and fixed-majority definitions produce identical baseline predictions for every dimension and setting.
 
-### B1. Extract features
+`08_bootstrap_ci.py` reports percentile 95% paired-bootstrap confidence intervals for `delta = rule - baseline`. It does not report bootstrap-derived p-values. All 16 dimension-level intervals in the released analysis include zero, so the rule pilot provides no confirmed improvement over the majority baseline at `n = 30`.
 
-The following commands extract the nine MIR/acoustic metrics:
+## Analyze your own audio
+
+### 1. Extract features
 
 ```bash
 bash scripts/01_demucs_separate.sh audio separated
@@ -109,13 +110,9 @@ python scripts/04_extract_d2d3.py --midi-dir midi  --output features/d2d3_featur
 python scripts/05_extract_d5.py   --audio-dir audio --output features/d5_features.csv
 ```
 
-Feature tables use the bare filename stem (for example, `song1`). WAV, MP3, FLAC, and M4A inputs can therefore be joined as long as the audio and MIDI files for a sample share the same stem.
+Feature tables use filename stems, so WAV, MP3, FLAC, and M4A inputs can be joined when the audio and MIDI files share the same stem.
 
-### B2. Apply the published diagnostic thresholds
-
-`scripts/09_diagnose.py` assigns a severity to D1, D2, D3, and D5 for each cover: `0` acceptable, `1` warning, or `2` severe. D4 is omitted because the pipeline has no objective metric for style matching.
-
-The three tables from B1 first have to be combined on `filename` into one feature table, called `features/my_features.csv` below. Running `scripts/06_spearman_analysis.py --features features/my_features.csv` builds it from the three tables in that directory (see B3), or you can merge them yourself. Then run:
+### 2. Apply the published thresholds
 
 ```bash
 python scripts/09_diagnose.py \
@@ -123,11 +120,11 @@ python scripts/09_diagnose.py \
   --out figures/my_diagnosis_labels.csv
 ```
 
-By default, the thresholds are learned from the paper's data. The labels are listening cues, not quality scores: in the 30-sample evaluation, the rules did not significantly outperform a majority-class baseline. A `0` can also mean that no metric was conclusive, rather than that the dimension is confirmed to be error-free.
+The labels are diagnostic cues, not validated quality scores. A label of `0` can mean that no available metric crossed a threshold; it does not establish that the dimension is error-free.
 
-### B3. Analyze features against your own ratings
+### 3. Compare features with your own ratings
 
-To calculate correlations or learn and validate thresholds on another dataset, provide integer ratings from 1 (worst) to 5 (best). The annotation file has this schema:
+Provide integer ratings from 1 (worst) to 5 (best):
 
 ```csv
 filename,D1,D2,D3,D4,D5
@@ -135,7 +132,7 @@ song1,4,3,5,2,4
 song2,2,1,3,4,2
 ```
 
-Use the same stem in the annotation and feature tables. `scripts/06_spearman_analysis.py` reports unmatched samples on stderr. Point `--features` and `--out-dir` at your own paths so the published tables and result artifacts are left unchanged:
+Then run:
 
 ```bash
 python scripts/06_spearman_analysis.py \
@@ -143,45 +140,31 @@ python scripts/06_spearman_analysis.py \
   --features features/my_features.csv \
   --output-csv figures/my_spearman_table.csv \
   --output-png figures/my_spearman_table.png
+
 python scripts/07_rule_diagnostic.py \
   --annotations data/annotations/my_scores.csv \
   --features features/my_features.csv \
   --out-dir figures/my_run
+
 python scripts/08_bootstrap_ci.py \
   --annotations data/annotations/my_scores.csv \
   --features features/my_features.csv \
   --out-dir figures/my_run
 ```
 
-`--out-dir` sends every `07`/`08` artifact (thresholds, LOO summaries, confusion matrices, bootstrap CIs, and the forest plot) into that directory under their standard names. Without it, `07`/`08` write to the published locations and would overwrite the paper's results. If `features/my_features.csv` does not exist, script `06` builds it from `d1_features.csv`, `d2d3_features.csv`, and `d5_features.csv` in the same directory.
-
-Note that `07`/`08` here learn and validate thresholds on your ratings, which is different from B2 and B4, where the published thresholds are applied as-is.
-
-### B4. Compare automatic labels with your ratings
-
-Pass your annotations to `09_diagnose.py` to produce a per-sample comparison and an agreement summary:
-
-```bash
-python scripts/09_diagnose.py \
-  --features features/my_features.csv \
-  --annotations data/annotations/my_scores.csv \
-  --compare-out figures/my_diagnosis_vs_human.csv \
-  --compare-summary figures/my_diagnosis_vs_human_summary.csv
-```
-
-The script maps ratings of 4–5 to `0`, 3 to `1`, and 1–2 to `2`, then reports agreement by dimension. Diagnosis thresholds still come from the published dataset (as in B2); `--annotations` supplies only the comparison labels, so this measures how well the *paper's* thresholds transfer to your covers. The agreement is a whole-sample resubstitution figure, not cross-validated. To instead learn and validate thresholds on your own ratings, use the leave-one-out and paired-bootstrap runs in B3 (`07` and `08`).
-
 ## Result summary
 
-In the 30-sample analysis, LLR has the clearest relationship with expert melody scores (`rho = -0.429`, `p = 0.018`). KCR follows the expected negative direction for key consistency, although it is not significant in this small sample. The production metrics are weakly correlated with D5, which is expected because D5 includes both signal-level mix quality and arrangement completeness.
+In the released 30-cover analysis, LLR produced the largest observed feature-rating correlation with D1 (`rho = -0.429`, uncorrected `p = 0.018`). No feature correlation met the Bonferroni reference threshold for nine prespecified comparisons. Key-related features were weak proxies, and the low-level loudness/spectral summaries did not explain arrangement quality.
 
-The rule-based diagnosis is deliberately reported as a diagnostic aid rather than a classifier: under leave-one-out validation the learned thresholds do not significantly outperform a majority-class baseline (`figures/bootstrap_ci.csv`), and for the overall 3-class setting the baseline is in fact ahead (delta `-0.125`, 95% CI `[-0.233, -0.017]`). Harmonic progression (D2) and arrangement/production (D5) carry the highest expert error rates, while key consistency (D3) is comparatively reliable.
+The rule pilot is reported as an exploratory diagnostic aid rather than a standalone evaluator. All 16 dimension-level paired-bootstrap 95% intervals for accuracy or weighted-F1 differences included zero. The pooled overall summaries are descriptive and are not treated as additional independent dimension-level tests.
 
-These results support the paper's main claim: low-level acoustic features work well as diagnostic cues that localize specific issues, but they cannot replace expert musical judgment for harmonic function, style consistency, and arrangement-level assessment.
+Six released covers have acceptable key consistency (`D3 >= 4`) together with severe harmonic-progression ratings (`D2 <= 2`), supporting the distinction between tonal-center stability and harmonic correctness.
+
+### Statistical scope
+
+The 30 covers are nested within only five source songs. The current Spearman calculations and paired bootstrap operate at the cover-sample level rather than modeling source-song identity. Correlations may therefore contain both sample-level and shared song-level variation. Larger studies should include more source songs and use mixed-effects analysis or song-level resampling.
 
 ## Citation
-
-If you use this pipeline, please cite:
 
 ```bibtex
 @misc{liang2026coverdiagnosis,
