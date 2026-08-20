@@ -127,12 +127,6 @@ def bootstrap_delta(
     return deltas
 
 
-def two_tailed_p(deltas: np.ndarray) -> float:
-    p_pos = float(np.mean(deltas > 0))
-    p_neg = float(np.mean(deltas < 0))
-    return min(1.0, 2.0 * min(p_pos, p_neg))
-
-
 def add_sample_key(loo: pd.DataFrame) -> pd.DataFrame:
     out = loo.copy()
     out["sample_key"] = out["filename"]
@@ -183,7 +177,6 @@ def build_rows(
                     "delta": delta,
                     "CI_low": float(np.percentile(deltas, 2.5)),
                     "CI_high": float(np.percentile(deltas, 97.5)),
-                    "p": two_tailed_p(deltas),
                 }
             )
     return rows
@@ -225,7 +218,7 @@ def save_forest_plot(results: pd.DataFrame, output_png: Path, output_pdf: Path) 
 
 def print_summary(results: pd.DataFrame, n_boot: int, seed: int) -> None:
     display = results.copy()
-    for column in ("rule_score", "baseline_score", "delta", "CI_low", "CI_high", "p"):
+    for column in ("rule_score", "baseline_score", "delta", "CI_low", "CI_high"):
         display[column] = display[column].map("{:.3f}".format)
     print(f"\nPaired bootstrap CI summary ({n_boot} repeats, seed={seed})")
     print(display.to_string(index=False))
@@ -241,7 +234,7 @@ def resolve_outputs(args: argparse.Namespace) -> None:
     }
     for attr, basename in defaults.items():
         if getattr(args, attr) is not None:
-            continue  # explicit flag wins
+            continue
         parent = args.out_dir if args.out_dir is not None else Path("figures")
         setattr(args, attr, parent / basename)
 
