@@ -68,16 +68,6 @@ CORRELATIONS = [
 ]
 
 
-def significance(p_value: float) -> str:
-    if p_value < 0.001:
-        return "***"
-    if p_value < 0.01:
-        return "**"
-    if p_value < 0.05:
-        return "*"
-    return "n.s."
-
-
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--annotations", type=Path, default=Path("data/annotations/evaluation_scores.csv"))
@@ -124,7 +114,6 @@ def main() -> int:
                 "expected": expected,
                 "rho": round(float(rho), 3),
                 "p": round(float(p_value), 3),
-                "sig": significance(float(p_value)),
             }
         )
 
